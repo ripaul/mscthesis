@@ -1,0 +1,426 @@
+\documentclass[10pt]{article}
+%\documentclass[twoside,leqno,twocolumn]{article}
+
+% Comment out the line below if using A4 paper size
+\usepackage[letterpaper]{geometry}
+
+\usepackage{algorithm}
+\usepackage[algo2e,ruled,vlined,linesnumbered]{algorithm2e}
+\usepackage{booktabs}
+
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{numprint}
+%\usepackage{fullpage}
+%\usepackage{multicol}
+%\usepackage{wrapfig}
+%\usepackage[sort&compress, sectionbib]{natbib}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+\DeclareMathOperator\mate{\mathrm{mate}}
+\DeclareMathOperator\level{\mathrm{level}}
+
+\usepackage{hyperref}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[normalem]{ulem}
+\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
+\def\MdR{\ensuremath{\mathbb{R}}}
+\def\MdN{\ensuremath{\mathbb{N}}}
+
+% fixing lines ending on one word etc...
+\setlength\parfillskip{0pt plus .4\textwidth}
+\setlength\emergencystretch{.1\textwidth}
+\clubpenalty10000
+\widowpenalty10000
+\displaywidowpenalty=10000
+
+%\usepackage{framed}
+%\makeatletter
+%\newenvironment{kframe}{%
+% \def\at@end@of@kframe{}%
+% \ifinner\ifhmode%
+%  \def\at@end@of@kframe{\end{minipage}}%
+%  \begin{minipage}{\columnwidth}%
+% \fi\fi%
+% \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+% \colorbox{shadecolor}{##1}\hskip-\fboxsep
+%     % There is no \\@totalrightmargin, so:
+%     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+% \MakeFramed {\advance\hsize-\width
+%   \@totalleftmargin\z@ \linewidth\hsize
+%   \@setminipage}}%
+% {\par\unskip\endMakeFramed%
+% \at@end@of@kframe}
+%\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\newcommand{\SweaveOpts}[1]{}  % do not interfere with LaTeX
+\newcommand{\SweaveInput}[1]{} % because they are not real TeX commands
+\newcommand{\Sexpr}[1]{}       % will only be parsed by R
+
+\newcommand{\Ciso}{$^{13}$C }
+
+\newcommand{\ie}{i.e.~}
+\newcommand{\etal}{et~al.~}
+\newcommand{\eg}{e.g.}
+
+\newtheorem{invariant}{Invariant}%[subsection]
+
+\usepackage{capt-of}%
+\usepackage{caption}
+\usepackage{xspace}
+
+\usepackage{etoolbox}
+%\usepackage[left,pagewise] {lineno}
+\definecolor {infocolor} {rgb} {0.6,0.6,0.6}
+%\renewcommand\linenumberfont{\normalfont\normalsize\textcolor{infocolor}}
+%\linenumbers
+
+%\bibliographystyle{plainurl}
+%\patchcmd{\thebibliography}{\list}{\fontsize{0.98em}{0.9\baselineskip}\selectfont\list}{}{} 
+\newcommand{\mb}[1]{\mathbf{#1}}
+
+% \renewcommand{\csch}[1]{}
+% \renewcommand{\ssch}[1]{}
+
+\newcommand{\mytitle}{\textsc{Improving Convergence of Markov Chain Monte Carlo Methods on Convex Polytopes for Parameter Estimation in Metabolic Flux Analysis}}
+\begin{document}
+\title{\huge \mytitle}
+\author{Richard Paul\thanks{University of Vienna, Faculty of Computer Science}}
+
+\date{}
+
+\maketitle
+
+\begin{abstract}
+    \noindent
+\end{abstract}
+
+\section{Introduction}
+
+In the field of Metabolomics, Metabolic Flux Analysis (MFA) deals with determining reaction rates in metabolic reaction networks \cite{noeh15}.
+A metabolic reaction network maps what substrates get turned over into which metabolites. 
+Generally speaking, such a reaction network contains only static information like stoichiometry and possible pathways,
+but does not contain any dynamic information, \ie we do not know which reactions happen at what rate or if they happen at all.
+Figuratively speaking, if we were to feed an organism with some substrate, then we do not expect all products to be there immediately, but instead they get slowly turned over.
+Also, depending on the substrate and the external stress that we apply on the organism, we do expect the metabolism to behave differently.
+For example, under certain conditions \textit{Aspergillus nidulans} does start emitting toxins when experiencing nutrient depletion \cite{}.
+
+Measuring reaction rates directly is not possible and instead we can only measure metabolite concentrations.
+However even this is not necessarily possible for all metabolites, at least not without unreasonable effort.
+Instead we usually only get to measure the extracellular fluxes by measuring rates of change in extracellular products like $\text{CO}_2$.
+
+% Using stoichiometric matrix... compute flux distribution as linear combination 
+
+\section{Preliminaries}
+\label{sec:preliminaries}
+
+The space of possible fluxes can further be restricted by inequality constraints demanding 
+\eg that some fluxes cannot be larger than preceeding ones or fixing the direction in which the reaction happens.
+Imposing these restrictions defines a convex polytope 
+$$
+    P = \{ x \in \mathbb{R}^n : Ax \leq b \}, \, A \in \mathbb{R}^{m \times n}, b \in \mathbb{R}^{m}
+$$
+in which we search for a satisfying solution.
+A solution in this case is a set of fluxes $x \in \mathbb{R}^n$ from which we can then compute the full flux distribution.
+
+The metabolism of an organism is defined by a set of biochemical reactions which turn substrates into energy, proteins, lipids and other "building blocks" of the organism, as well as other possibly desired compounds e.g. toxins.
+Along so-called metabolic pathways different substrates will be turned into new products which then again act as substrates for further reactions.
+An intuitive way of handling the set of metabolic reactions is via reaction networks.
+A \emph{reaction network} forms a directed bipratite graph $G=(M,R,E)$ consisting of a node set $M$ 
+representing the metabolites, i.e. the chemical compounds included throughout the metabolism, 
+a node set $R$ representing the reactions and an edge set $E \subseteq M \times R$ of directed edges, 
+i.e. $(v,u) \neq (u,v) \in E$.
+An alternative but equivalent way to interpret the reaction network is to regard it as a hypergraph, 
+where the node set consists of the metabolites only and the directed hyperedges form the reactions.
+The previously described bipartite graph is then called the incidence or Levi graph of the latter.
+
+Consider the following exemplary chemical reaction equations including three not further specified compounds $A, B, C$ and $D$
+\begin{align}
+    \begin{array}{r r l}
+	R_1: & A + B & \to C \\
+	R_2: & C & \to B + D
+    \end{array} \label{eq:reaction-eqs}
+\end{align}
+then its reaction network looks as depictured in Figure \ref{fig:reaction-network}.
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.6\textwidth]{reaction-network}
+    \caption{The reaction network described by the chemical reaction equations \ref{eq:reaction-eqs} as a bipartite graph.}
+    \label{fig:reaction-network}
+\end{figure}
+
+Given a reaction network described by its reaction equations, 
+we can also set up a \emph{stoichiometric matrix} $\mb{S} \in \mathbb{N}^{n \times m}$, 
+where $n = |M|$ is the number of compounds present in the reaction network and $m = |R|$ the number of reactions in the network.
+The entries $s_{ij}$ of $S$ are then given as the difference of stoichiometric coefficients on the input and output sides of the $i$-th compound in the $j$-th reaction.
+For a general reaction equation with a vector of compounds $\mb{A} = (A_1, A_2, \dots, A_n)^T$ and $m$ reactions
+\begin{align}
+    R_j: \sum_{i=1}^n k_{ij} A_i \to \sum_{i_1}^n l_{ij} A_i, \qquad j = 1, \dots, m
+\end{align}
+the entries of the stoichiometric matrix therefore are $s_{ij} = k_{ij} - l_{ij}$.
+The stoichiometric matrix for our exemplary reaction equations is given by
+\begin{align}
+    \mb{S} = \begin{pmatrix}
+	-1 &  0 \\
+	-1 &  1 \\
+	1  & -1 \\
+	0  &  1 \\
+    \end{pmatrix}
+\end{align}
+Note that no catalystic effects can be described by the stoichiometric matrix, since the difference of left and right hand side stoichiometric coefficients will always cancel out catalysts.
+Reaction networks for organisms maybe found in the BioCyc database, the Kyoto Encyclopedia of Genes and 
+Genomes and other similar databases and repositories.
+
+The reaction network which we have described so far gives us a purely static view on our system.
+Consider to feed your system with some appropriate substrate, qualitatively you will not expect all of the metabolites to be present in the system at once.
+Instead the reactions associated with the incoming substrates will start turning it over into the metabolites specified by the corresponding reactions.
+It is therefore rather obvious that the reaction network so far does not carry any information about the dynamics of the system.
+The question raises at which rate this will happen and what metabolite concentrations will we be able to measure after some amount of time has passed.
+Determining these rates is the very goal of metabolic flux analysis.
+
+We now extend our formalism in order to take into account fluxes.
+The fluxes we wish to determine are each associated with one of the reactions.
+In the following we denote the fluxes as the vector $\mb{v}=(v_i, v_2, \dots, v_m)^T \in \mathbb{R}^m$, 
+where $v_i$ is the reaction rate associated to reaction $R_i \in R$.
+Under the assumption, that all metabolites are available plenty and reaction rates happen at a constant rate, we can define the time derivative of the metabolite concentration $\mb{x}=(x_1, \dots, x_n)^T$ where $x_i \in M$ as
+\begin{align}
+    \frac{\mathrm{d}}{\mathrm{d}t}\mb{x} = \mb{S}\mb{v}
+\end{align}
+which intuitively describes the rate of change of each metabolite as sum of the in and out fluxes.
+By introducing the so-called steady state condition, we can restrict the space of possible fluxes to the solution of the linear system
+\begin{align}
+    \mb{S}\mb{v} = \mb{0} \label{eq:steady-state}
+\end{align}
+From a biological point of view the steady state condition puts the system into a metabolic steady state also known as homeostasis, 
+where metabolite concentrations do not change anymore because the in and out fluxes cancel each other out.
+In general, there exist more reactions than compounds in realisitic metabolic models \cite{noeh15, orth10}, 
+i.e. $m > n$ which immediately leads to the linear system in \ref{eq:steady-state} to be underdetermined.
+Assuming that $\mb{S}$ has full row rank, then the solution space, also known as the kernel or null space of $\mb{S}$,
+is a $l=m - n$ dimensional convex polytope.
+It follows that if we somehow determine $l$ flux values, the rest can be computed from these.
+We call these fluxes the free fluxes $\omega \in V$ and denote the parameter space of these fluxes 
+with $V \subseteq \mathbb{R}^l$
+
+\section{Flux Balance Analysis}
+
+Flux Balance Analysis is a technique which tries to overcome the problem of underdetermination by introducing the further assumption, 
+that the system at hand has been optimized in some sense \cite{orth10,raman09,varma94}. 
+Biologically this is justified by the assumption that evolutionary processes themselves led the system to optimize its metabolism and hence its survivability \cite{varma94}.
+Regarding our formalism this optimization assumption can be reflected by assuming some objective function $f(\mb{v})$ which we aim to minimize.
+If this objective function is linear in the fluxes $\mb{v}$ then the whole problem becomes a linear program which is easily solvable using e.g. the Simplex Algorithm.
+Some linear and nonlinear objective functions taken from \cite{schuetz07} are presented in Table \ref{tab:obj-funcs}.
+
+\begin{table}
+	\centering
+	\begin{tabular}{l | r}
+	    Description & Formula \\
+	    \hline \\
+	    Maxmize biomass yield or maxmize growth & $\max \frac{v_\mathrm{biomass}}{v_\mathrm{glucose}}$ \\ \\
+	    Maxmize ATP yield & $\max \frac{v_\mathrm{ATP}}{v_\mathrm{glucose}}$ \\ \\
+	    Minimize Redox potential & $\min \frac{\sum_m v_\mathrm{NADH}}{v_\mathrm{glucose}}$ \\ \\
+	    Minimize the overall intracellular fluxes  & $\min \sum_{i=1}^m v_i^2$ \\
+	\end{tabular}
+	\caption{Different commonly used objective functions for FBA calculations, taken from \cite{schuetz07}.}
+	\label{tab:obj-funcs}
+\end{table}
+
+A very commonly used objective function is the growth of biomass \cite{raman09, varma94, orth10}.
+This objective function has been empirically shown to match the behaviour of \emph{Escherichia coli} very well \cite{ibarra02},
+however there also have been scenarios where biomass maximization failed to explain the metabolic behaviour \cite{segre02, burgard03}.
+The assumption on the optimality of the metabolism for some purpose or identifying the purpose 
+(and hence an appropriate objective function) turn out to be the major downsides of Flux Balance Analysis \cite{raman09,simeonidis10,schuetz07,bogaerts17}.
+An example is given by Simeonidis et al. \cite{simeonidis10}, who describe that typical FBA results for the growth of yeast 
+are incapable of explaining the production of ethanol throughout the growth process.
+
+Another issue is the interdependence between the environmental conditions of an experiment or a simulation and the objective function 
+as e.g. an organism on the brink of starvation will most probably not try to maximize its biomass in this situation \cite{raman09}.
+This emphasizes the careful considerations needed when choosing an appropriate objective function.
+Note however that by formulating the problem of determining the flux distribution as an optimization problem, 
+no further data on metabolite concentrations is needed to solve for a flux distribution $\mb{v}$ \cite{simeonidis10}.
+
+
+\subsection{Software}
+
+A common tool for performing Flux Balance Analysis is the \textsc{Cobra}\footnotemark[1] toolbox for 
+\textsc{MatLab}\cite{heirendt19}.
+\footnotetext[1]{https://opencobra.github.io/cobratoolbox/stable/}
+It can be used in combination with common solvers like the open-source \textsc{GLPK}\footnotemark[2] 
+or commercial solvers like \textsc{gurobi}\footnotemark[3].
+\footnotetext[2]{https://www.gnu.org/software/glpk/}
+\footnotetext[3]{https://www.gurobi.com/}
+Stoichiometric matrix, constraints and objective function can be formulated using \textsc{Cobra} and are
+then passed to the selected solver, which actually tries to solve the described optimization problem.
+\textsc{CobraPy}\footnotemark[4] and \textsc{Cobra.jl}\footnotemark[5] port the \textsc{Cobra} toolbox 
+to languages like \textsc{Python} and \textsc{Julia}.
+\footnotetext[4]{https://opencobra.github.io/cobrapy/}
+\footnotetext[5]{https://opencobra.github.io/COBRA.jl/stable/}
+
+
+\section{\texorpdfstring{$^{13}$C}{13C} Metabolic Flux Analysis}
+
+A different approach for determining intracellular fluxes in metabolic networks is \Ciso Metabolic Flux Analysis.
+Unlike Flux Balance Analysis, \Ciso MFA makes heavy use on the measurement of metabolite data 
+and by doing so overcomes the optimality assumption imposed by classical Flux Balance Analysis.
+At the very core of the technique lie so-called Isotope Labelling Experiments, 
+where the carbon-based substrate is marked at specific positions within the molecular geometry.
+These labels are later used to measure metabolite concentrations in different labelling states 
+using nuclear magnetic resonance (NMR) or mass spectrometry (MS).
+
+\subsection{Atom Transition Network \& Isotopic Steady State}
+\label{sec:atom-transition-network}
+
+As an extension of the classical reaction network for \Ciso-MFA we need the atom transition network for C 
+of our metabolic network.
+The atom transition network maps the fate of every single C atom in any of the metabolites.
+Consider the previous exemplary metabolic network from Section \ref{sec:preliminaries} 
+and assume that the compounds $A, B$ and $D$ consist of two C atoms each and $C$ of four.
+Further for reaction $R_1$ assume that the C atoms on position 1 and 2 in $A$ become the C atoms on position 1 
+and 2 in $C$ and the C atoms on position 1 and 2 in $B$ become the C atoms on position 3 and 4 in compound $C$.
+For reaction $R_2$, the C atoms on position 1 and 2 from $C$ become the C atoms on position 1 and 2 in $B$ and the C atoms on position 3 and 4 from $C$ become the C atoms on position 1 and 2 in $D$.
+The described transitions are summarized visually in the atom transition network in Figure \ref{fig:atom-trans}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\textwidth]{atom-transition-network}
+    \caption{Atom transition network as described in Section \ref{sec:atom-transition-network}. Reactions are now color-encoded, blue stands for reaction 1, red stands for reaction 2.}
+    \label{fig:atom-trans}
+\end{figure}
+
+Similarily to Section \ref{sec:preliminaries} we are interested in the rates of change of the now labelled metabolites.
+Let $a_i, b_i, d_i$ and $c_k$ denote the different fractions of labeled metabolites $A, B, D$ and $C$ respectively, 
+where $i=0,\dots,3$ for $a, b, d$ and $k=0,\dots,15$ for $c$ and we just use an arbitrary numbering of the different
+labeling states in which each metabolite can reside.
+Note that each C-atom can be either labelled or not and we therefore get $2^k$ different labelling states
+for every compound with $k$ C-atoms.
+For compound $C$ we get the following differential equation
+\begin{align}
+    \frac{\mathrm{d}}{\mathrm{d}t} c_k = v_1 a_i b_j - v_2 c_k, \qquad i,j=0,\dots,3, \quad k = 0, \dots, 15 
+    \label{eq:isotope-mass-bal-eq}
+\end{align}
+which yields a total of 16 equations.
+Note that the nonlinear term $v_1 a_i b_j$ denotes the fraction of the flux $v_1$ 
+where a metabolite $A$ in labeling state $i$ and a metabolite $B$ in labelling state $j$ react together.
+The negative term $-v_2 c_k$ is the efflux where metabolites from $C$ react in $R_2$.
+Similar equations to \ref{eq:isotope-mass-bal-eq} may be derived for all other metabolite pools $A, B$ and $D$.
+These equations form a dynamic system of nonlinear ordinary differential equations, 
+which has been proven to always converge towards a unique equilibrium \cite{wiechert01}, where 
+\begin{align}
+    \frac{\mathrm{d}}{\mathrm{d}t} \mb{x} = 0 \label{eq:nonlin-sys}
+\end{align}
+where $\mb{x}$ is the vector of all possible labelling states for every metabolite in the system.
+This condition describes the so-called isotopic steady state.
+
+\subsection{Simulation \& Parameter Estimation}
+
+If we are now given some set of flux values and some initial isotope labelling distribution, 
+we can easily simulate an Isotope Labelling Experiment by either integrating the differential equations or
+trying to solve the nonlinear algebraic system \ref{eq:nonlin-sys}.
+However our primary goal remains finding the fluxes, 
+which match measurements of real-world Isotope Labelling Experiments best.
+Summarizing the above, the steady state isotope labelling distribution is a function of 
+the free flux values $\omega$ (refer to Section \ref{sec:preliminaries}) and the 
+initial isotope labelling distribution $\mb{x_0}$. 
+Note that all flux values $\mb{v}$ maybe determined if the free flux values $\omega$ are. 
+If we now assume some fixed initial labelling and that we can measure the isotopomer fractions for some 
+metabolite and further assume that our parameter space is one-dimensional, 
+i.e. all fluxes depend on the determination of a single flux,
+then if the single isotopomer fraction as a function of the free flux is bijective, 
+this gives us a one-to-one relation between the measured isotopomer fraction and the free flux.
+In this case, we conclude as we have successfully determined the fluxes in our metabolic network.
+
+However, it is rather obvious that the previous assumptions might be unrealistic. 
+In fact, for large-scale real-world metabolic networks, the number of free fluxes which we have to determine
+will be much larger \cite{noeh15}.
+In this case any measurement of an isotopomer fraction will form a cutting plane through the now multivariate
+function of the isotopomer fraction, where the intersect of the plane and the function define the set of all 
+plausible free fluxes able to explain the measurement.
+Given multiple measurements the goal is to identify a unique set of free fluxes 
+as the intersection of all the sets of plausible fluxes.
+If such a unique set of free fluxes exists, we have \emph{global flux identifiability},
+whereas we have \emph{local flux identifiability}, if the set is not unique \cite{noeh15}.
+
+In practice, this problem is solved using nonlinear parameter fitting, where fluxes are found 
+by minimizing the sum of squared residuals of an (ideally) large set of measurements \cite{noeh15}.
+Assume that the initial isotope labelling distribution is fixed, 
+then let $f(\omega)=\mb{x}$ be the solution of a simulated Isotope Labelling Experiment, 
+where $\mb{x}$ is once more the 
+isotopomer distribution and $\omega$ is a vector of estimates for the free fluxes.
+Further let $\mb{Y} = (\mb{y}_1, \dots, \mb{y}_k)$ be a set of measured isotopomer distributions from
+\emph{in vivo} experiments using the same initial labelling distribution,
+then the sum of squared residuals is given by
+\begin{align}
+    \mathrm{SSR}(\omega) = \sum_{i=1}^k \| \mb{y}_i - f(\omega) \|^2_2
+\end{align}
+Hence, the problem of identifying the flux values boils down to solving the optimization problem
+\begin{align}
+    \omega^* = \min_{\omega \in V} \mathrm{SSR}(\omega)
+\end{align}
+This problem however may become high-dimensional as it depends on $l = \dim V$, i.e. the number of free fluxes
+which needs to be determined, in order to compute the full flux distribution $\mb{v}$, 
+such that it solves the metabolic steady state equation $\mb{S}\mb{v} = \mb{0}$.
+
+\subsection{Software}
+
+\textsc{13CFLUX2}\footnotemark[6] is a high-performance software for \Ciso Metabolic Flux Analysis written 
+in \textsc{C++}\cite{weitzel12}.
+\footnotetext[6]{https://www.13cflux.net/13cflux2/}
+Models are described using \textsc{FluxML}\footnotemark[7], which is a XML-based format for exchanging MFA models \cite{beyss19}.
+\footnotetext[7]{https://github.com/modsim/FluxML}
+The software can conduct high performance simulations of Isotope Labelling experiments and includes
+a variety of statistical methods to determine the fluxes of the system.
+Data can be exported using \textsc{csv} or \textsc{hdf5} files to easily allow further data evaluation with
+common tools like \textsc{MatLab} or similar software.
+
+\section{Conclusion}
+
+Both methods, Flux Balance Analysis as well as \Ciso Metabolic Flux Analysis are techniques which 
+aim at determining fluxes in metabolic networks.
+Flux Balance Analysis uses a minimal amount of data to solve the problem as a rather easy optimization
+problem by assuming that the organism itself is aimed at optimizing some trait like growth or ATP yield.
+This easy to solve formulation of the problem however comes at the cost of possibly wrong results based
+on wrong assumptions on the behaviour of the organism.
+\Ciso Metabolic Flux Analysis on the other hand makes heavy use of measured data from 
+Isotope Labelling Experiments and tries to determine fluxes such that they minimize the sum of 
+squared residuals reagarding the measured data.
+This usually becomes a rather tedious optimization problem, for which sophisticated solving strategies are
+needed.
+
+\bibliographystyle{plain}
+\bibliography{literature}
+
+\end{document}
+
+

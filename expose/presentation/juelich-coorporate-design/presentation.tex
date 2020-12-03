@@ -1,0 +1,44 @@
+% SPDX-License-Identifier: MIT
+% Copyright (c) 2017-2020 Forschungszentrum Juelich GmbH
+% This code is licensed under MIT license (see the LICENSE file for details)
+%
+\documentclass[
+t, % align text inside frame to t=top, b=bottom, c=center
+10pt, % 8pt, 9pt, 10pt, 11pt, 12pt, 14pt, 17pt, 20pt available as text font
+aspectratio=169, % select your aspect ratio 4:3=43, 16:9=169, 16:10=1610
+ngerman,
+english,
+%handout,
+]{beamer}
+\usetheme{Juelich}
+
+\usepackage{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+
+\usepackage{hyperref}
+\usepackage{physics}
+
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily,breaklines=true}
+
+\newcommand{\Ciso}{$^{13}$C~}
+\DeclareMathOperator{\Reals}{\mathbb{R}}
+\newcommand{\deriv}[2]{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+
+\newcommand{\templateversion}{18.10}
+\newcommand{\tutorialversion}{18.10}
+
+\title{Improving Sampling Efficiency in \Ciso MFA}
+\subtitle{Master's Thesis Outline}
+\author{Richard D. Paul}
+%\institute[My Institute]{}
+\date{\today}
+\titlegraphic{\includegraphics[width=\paperwidth]{placeholder}}
+
+\begin{document}
+\maketitle
+
+\input{../slides}
+
+\end{document}

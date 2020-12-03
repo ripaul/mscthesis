@@ -8,3 +8,6 @@
 *.synctex.gz
 *.bbl
 *.sw*
+*.nav
+*.snm
+*.toc
