@@ -1,0 +1,42 @@
+\documentclass[serif,aspectratio=169]{beamer}
+
+\usepackage{bbm}
+%\usepackage[algo2e,ruled,vlined,linesnumbered]{algorithm2e}
+\usepackage[algo2e]{algorithm2e}
+\usepackage[symbol]{footmisc}
+\usepackage{physics}
+\usepackage{url}
+
+\usepackage{soul}
+
+\usetheme{Singapore}
+\usecolortheme{dove}
+\useoutertheme{infolines}
+\useinnertheme{circles}
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\definecolor{lgray}{rgb}{0.8,0.8,0.8}
+\definecolor{orange}{rgb}{1,0.5,0.055}
+
+\title{Optimization of Advanced Marko Chain Monte Carlo Methods with Applications to Biological Systems}
+\subtitle{}
+\author{Richard D. Paul}
+\institute[]{Forschungszentrum J\"ulich}
+\date{\today}
+
+\beamertemplatenavigationsymbolsempty
+
+\newcommand{\Ciso}{$^{13}$C~}
+
+
+\begin{document}
+    \frame{\titlepage}
+    \input{slides.tex}
+    
+    \begin{frame}
+        \tiny
+	\bibliographystyle{acm}
+	\bibliography{literature}
+    \end{frame}
+\end{document}
+
