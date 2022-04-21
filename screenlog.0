@@ -1,0 +1,31 @@
+/usr/local/lib/python3.8/dist-packages/pkg_resources/__init__.py:116: PkgResourcesDeprecationWarning: 0.23ubuntu1 is an invalid version and will not be supported in a future release
+  warnings.warn(
+[1.00000000e-05 1.63789371e-05 2.68269580e-05 4.39397056e-05
+ 7.19685673e-05 1.17876863e-04 1.93069773e-04 3.16227766e-04
+ 5.17947468e-04 8.48342898e-04 1.38949549e-03 2.27584593e-03
+ 3.72759372e-03 6.10540230e-03 1.00000000e-02 1.12201845e-02
+ 1.25892541e-02 1.41253754e-02 1.58489319e-02 1.77827941e-02
+ 1.99526231e-02 2.23872114e-02 2.51188643e-02 2.81838293e-02
+ 3.16227766e-02 3.54813389e-02 3.98107171e-02 4.46683592e-02
+ 5.01187234e-02 5.62341325e-02 6.30957344e-02 7.07945784e-02
+ 7.94328235e-02 8.91250938e-02 1.00000000e-01 1.12201845e-01
+ 1.25892541e-01 1.41253754e-01 1.58489319e-01 1.77827941e-01
+ 1.99526231e-01 2.23872114e-01 2.51188643e-01 2.81838293e-01
+ 3.16227766e-01 3.54813389e-01 3.98107171e-01 4.46683592e-01
+ 5.01187234e-01 5.62341325e-01 6.30957344e-01 7.07945784e-01
+ 7.94328235e-01 8.91250938e-01 1.00000000e+00 1.63789371e+00
+ 2.68269580e+00 4.39397056e+00 7.19685673e+00 1.17876863e+01
+ 1.93069773e+01 3.16227766e+01 5.17947468e+01 8.48342898e+01
+ 1.38949549e+02 2.27584593e+02 3.72759372e+02 6.10540230e+02
+ 1.00000000e+03]
+Scaling...
+ A: min|aij| =  1.000e+00  max|aij| =  1.000e+00  ratio =  1.000e+00
+Problem data seem to be well scaled
+STAT-1 2
+STAT-1-ni 3
+STAT-2 2
+STAT-2-ni 3
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
