@@ -229,3 +229,196 @@ Problem data seem to be well scaled
   (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
 /usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
   (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/pkg_resources/__init__.py:116: PkgResourcesDeprecationWarning: 0.23ubuntu1 is an invalid version and will not be supported in a future release
+  warnings.warn(
+Scaling...
+ A: min|aij| =  1.000e+00  max|aij| =  1.000e+00  ratio =  1.000e+00
+Problem data seem to be well scaled
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+/usr/local/lib/python3.8/dist-packages/arviz/stats/diagnostics.py:586: RuntimeWarning: invalid value encountered in double_scalars
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
