@@ -74,7 +74,6 @@ starting_points = {
 for key in problems:
     T, s = problems[key]['rounded'][1].transformation, problems[key]['rounded'][1].shift
     starting_points[key]['rounded'] = [np.linalg.solve(T, x - s) for x in starting_points[key]['default']]
-    print(starting_points[key]['rounded'])
 
 proposals = {
 #    "Adaptive Metropolis": hopsy.AdaptiveMetropolisProposal,
@@ -98,7 +97,6 @@ m, l = 0, 1
 a, b = -5, 3
 
 def get_stepsize_grid(_m, _l, _a=a, _b=b):
-    print(_m, _l, _a, _b)
     return 10**np.hstack([
         np.linspace(_a, _m-_l, int(coarse * (_m-_l-_a) + 1))[:-1],
         np.linspace(_m-_l, _m+_l, int(fine * 2* _l + 1))[:-1], 
@@ -116,6 +114,7 @@ grid_params = {
     ('STAT-1', 'Rounding Gaussian'): (-4, 1),
     ('STAT-1', 'Rounding Gaussian\nHit-And-Run'): (-4, 1),
     ('STAT-1-ni', 'BallWalk'): (-1, 1),
+    #('STAT-1-ni', 'CSmMALA'): (.5, 1),
     ('STAT-1-ni', 'CSmMALA'): (-1, 1),
     ('STAT-1-ni', 'DikinWalk'): (-1, 1),
     ('STAT-1-ni', 'Gaussian'): (-1.5, 1),
@@ -163,16 +162,17 @@ target_display_names = {
     "t":      "$T/n$",
 }
 
-def uniform_sampling(problem):
-    mcs = [hopsy.MarkovChain(problem, hopsy.UniformHitAndRunProposal) for i in range(n_chains)]
+def uniform_sampling(problem, dim, starting_points, seed):
+    _problem = hopsy.Problem(problem.A, problem.b, transformation=problem.transformation, shift=problem.shift)
+    mcs = [hopsy.MarkovChain(_problem, hopsy.GaussianHitAndRunProposal, starting_points[i]) for i in range(n_chains)]
     rngs = [hopsy.RandomNumberGenerator(seed, i) for i in range(n_chains)]
 
-    accrate, states = hopsy.sample(mcs, rngs, n_samples, dim)
+    accrate, states = hopsy.sample(mcs, rngs, int(n_samples), int(100*dim), 1)
     rhat = np.max(hopsy.rhat(states))
     
     i = 0
-    while not(rhat < rhat_threshold) and i < n_max:
-        _accrate, _states = hopsy.sample(mcs, rngs, n_samples, dim)
+    while not(rhat < rhat_threshold) and i < N_max:
+        _accrate, _states = hopsy.sample(mcs, rngs, int(n_samples/100), int(100*dim), 1)
         
         states = np.concatenate([states, _states], axis=1)
         rhat = np.max(hopsy.rhat(states))
@@ -182,19 +182,19 @@ def uniform_sampling(problem):
     return states
 
 
-opt_sampling = {'STAT-1': ('CSmMALA', 4.39397056076079), 'STAT-1-ni': ('Gaussian\nHit-And-Run', 0.1), 'STAT-2': ('Gaussian\nHit-And-Run', 0.1), 'STAT-2-ni': ('Gaussian\nHit-And-Run', 1)}
+opt_sampling = {'STAT-1': ('Gaussian\nHit-And-Run', 0.1), 'STAT-1-ni': ('Gaussian\nHit-And-Run', 0.1), 'STAT-2': ('Gaussian\nHit-And-Run', 0.1), 'STAT-2-ni': ('Gaussian\nHit-And-Run', 1)}
 
-def posterior_sampling(problem, Proposal, stepsize):
-    mcs = [hopsy.MarkovChain(problem, hopsy.UniformHitAndRunProposal) for i in range(n_chains)]
+def posterior_sampling(Proposal, problem, dim, starting_points, stepsize, seed):
+    mcs = [hopsy.MarkovChain(problem, Proposal, starting_points[i]) for i in range(n_chains)]
     for mc in mcs: mc.proposal.stepsize = stepsize
     rngs = [hopsy.RandomNumberGenerator(seed, i) for i in range(n_chains)]
 
-    accrate, states = hopsy.sample(mcs, rngs, n_samples, dim)
+    accrate, states = hopsy.sample(mcs, rngs, n_samples, dim, n_chains)
     rhat = np.max(hopsy.rhat(states))
     
     i = 0
-    while not(rhat < rhat_threshold) and i < n_max:
-        _accrate, _states = hopsy.sample(mcs, rngs, n_samples, dim)
+    while not(rhat < rhat_threshold) and i < N_max:
+        _accrate, _states = hopsy.sample(mcs, rngs, n_samples, dim, n_chains)
         
         states = np.concatenate([states, _states], axis=1)
         rhat = np.max(hopsy.rhat(states))
@@ -240,34 +240,86 @@ def bruteforce_sampling(Proposal, problem, dim, starting_points, stepsize, seed)
     return result
 
 
-args = []
-args_idx = []
-args_key = []
+def get_bruteforce_args():
+    args = []
+    args_idx = []
+    args_key = []
 
-for problem_key in problems:
-    n_jobs = len(args)
-    _problems = problems[problem_key]
-    for proposal_key, Proposal in proposals.items():
-        if rounding[proposal_key]:
-            variant = "rounded"
-        else:
-            variant = "default"
+    for problem_key in problems:
+        n_jobs = len(args)
+        _problems = problems[problem_key]
+        for proposal_key, Proposal in proposals.items():
+            if rounding[proposal_key]:
+                variant = "rounded"
+            else:
+                variant = "default"
+
+            dim, problem = _problems[variant]
+
+            for stepsize in stepsize_grids[(problem_key, proposal_key)]:
+                for seed in range(n_seeds):
+                    rng = hopsy.RandomNumberGenerator(seed, n_chains)
+                    uniform = hopsy.Uniform(0, len(starting_points[problem_key][variant]))
+                    draws = [int(uniform(rng)) for i in range(n_chains)]
+
+                    _starting_points = [starting_points[problem_key][variant][i] for i in draws]
+
+                    args += [(Proposal, problem, dim, _starting_points, stepsize, seed)]
+
+    args_idx += [(problem, proposal, i, seed) for problem in problems
+                                              for proposal in proposals
+                                              for i, _ in enumerate(stepsize_grids[(problem, proposal)])
+                                              for seed in range(n_seeds)]
+
+    return args, args_idx
+
+
+def get_posterior_args():
+    args = []
+    args_idx = []
+    args_key = []
+
+    for problem_key in problems:
+        n_jobs = len(args)
+        variant = "rounded"
+        dim, problem = problems[problem_key][variant]
+        
+        for seed in range(1):
+            rng = hopsy.RandomNumberGenerator(seed, n_chains)
+            uniform = hopsy.Uniform(0, len(starting_points[problem_key][variant]))
+            draws = [int(uniform(rng)) for i in range(n_chains)]
+
+            _starting_points = [starting_points[problem_key][variant][i] for i in draws]
             
-        dim, problem = _problems[variant]
+            Proposal = proposals[opt_sampling[problem_key][0]]
+            stepsize = opt_sampling[problem_key][1]
             
-        for stepsize in stepsize_grids[(problem_key, proposal_key)]:
-            for seed in range(n_seeds):
-                rng = hopsy.RandomNumberGenerator(seed, n_chains)
-                uniform = hopsy.Uniform(0, len(starting_points[problem_key][variant]))
-                draws = [int(uniform(rng)) for i in range(n_chains)]
-                
-                _starting_points = [starting_points[problem_key][variant][i] for i in draws]
-                
-                args += [(Proposal, problem, dim, _starting_points, stepsize, seed)]
-    n_jobs = len(args) - n_jobs
-    args_key += [problem_key] * n_jobs # all these new elements belong to problem_key
-    
-args_idx += [(problem, proposal, i, seed) for problem in problems
-                                          for proposal in proposals
-                                          for i, _ in enumerate(stepsize_grids[(problem, proposal)])
-                                          for seed in range(n_seeds)]
+            args += [(Proposal, problem, dim, _starting_points, stepsize, seed)]
+
+    args_idx += [problem for problem in problems]
+
+    return args, args_idx
+
+
+def get_uniform_args():
+    args = []
+    args_idx = []
+    args_key = []
+
+    for problem_key in problems:
+        n_jobs = len(args)
+        variant = "rounded"
+        dim, problem = problems[problem_key][variant]
+        
+        for seed in range(1):
+            rng = hopsy.RandomNumberGenerator(seed, n_chains)
+            uniform = hopsy.Uniform(0, len(starting_points[problem_key][variant]))
+            draws = [int(uniform(rng)) for i in range(n_chains)]
+
+            _starting_points = [starting_points[problem_key][variant][i] for i in draws]
+            
+            args += [(problem, dim, _starting_points, seed)]
+
+    args_idx += [problem for problem in problems]
+
+    return args, args_idx
