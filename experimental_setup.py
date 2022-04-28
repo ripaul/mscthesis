@@ -29,7 +29,7 @@ n_samples = 10_000
 n_samples_order = 1
 
 rhat_threshold=1.05
-N_max = 20
+N_max = 50
 
 lb, ub = -1000, 1000
 lb_ni, ub_ni = -1000, 1000
@@ -261,7 +261,7 @@ def bruteforce_sampling(Proposal, problem, dim, starting_points, stepsize, seed)
     rngs = [hopsy.RandomNumberGenerator(seed, i) for i in range(n_chains)]
 
     elapsed = time.time()
-    accrate, states = hopsy.sample(mcs, rngs, n_samples, dim)
+    accrate, states = hopsy.sample(mcs, rngs, dim * n_samples)
     elapsed = time.time() - elapsed
     rhat = np.max(hopsy.rhat(states))
     
