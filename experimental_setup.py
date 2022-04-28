@@ -31,24 +31,47 @@ n_samples_order = 1
 rhat_threshold=1.05
 N_max = 20
 
-fine, coarse = 16, 5 
+lb, ub = -1000, 1000
+lb_ni, ub_ni = -1000, 1000
 
 problems = {
     "STAT-1": {
-        "default": [(model.A.shape[1], hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), -1000, 1000)) for model in [x3c.X3CModel("models/Spiralus_STAT_unimodal.fml")]][0],
-        "rounded": [(model.A.shape[1], hopsy.round(hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), -1000, 1000))) for model in [x3c.X3CModel("models/Spiralus_STAT_unimodal.fml")]][0],
+        "default": [(model.A.shape[1], hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), lb, ub)) for model in [x3c.X3CModel("models/Spiralus_STAT_unimodal.fml")]][0],
+        "rounded": [(model.A.shape[1], hopsy.round(hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), lb, ub))) for model in [x3c.X3CModel("models/Spiralus_STAT_unimodal.fml")]][0],
     },
     "STAT-1-ni": {
-        "default": [(model.A.shape[1], hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), -1000, 1000)) for model in [x3c.X3CModel("models/Spiralus_STAT_unimodal_ni.fml")]][0], 
-        "rounded": [(model.A.shape[1], hopsy.round(hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), -1000, 1000))) for model in [x3c.X3CModel("models/Spiralus_STAT_unimodal_ni.fml")]][0], 
+        "default": [(model.A.shape[1], hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), lb_ni, ub_ni)) for model in [x3c.X3CModel("models/Spiralus_STAT_unimodal_ni.fml")]][0], 
+        "rounded": [(model.A.shape[1], hopsy.round(hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), lb_ni, ub_ni))) for model in [x3c.X3CModel("models/Spiralus_STAT_unimodal_ni.fml")]][0], 
     },
     "STAT-2": {
-        "default": [(model.A.shape[1], hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model, model.initial_point), -1000, 1000)) for model in [x3c.X3CModel("models/Spiralus_STAT_bimodal.fml")]][0], #+
-        "rounded": [(model.A.shape[1], hopsy.round(hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), -1000, 1000))) for model in [x3c.X3CModel("models/Spiralus_STAT_bimodal.fml")]][0], #+
+        "default": [(model.A.shape[1], hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model, model.initial_point), lb, ub)) for model in [x3c.X3CModel("models/Spiralus_STAT_bimodal.fml")]][0], #+
+        "rounded": [(model.A.shape[1], hopsy.round(hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), lb, ub))) for model in [x3c.X3CModel("models/Spiralus_STAT_bimodal.fml")]][0], #+
     },
     "STAT-2-ni": {
-        "default": [(model.A.shape[1], hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), -1000, 1000)) for model in [x3c.X3CModel("models/Spiralus_STAT_bimodal_ni.fml")]][0], #+
-        "rounded": [(model.A.shape[1], hopsy.round(hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), -1000, 1000))) for model in [x3c.X3CModel("models/Spiralus_STAT_bimodal_ni.fml")]][0], #+
+        "default": [(model.A.shape[1], hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), lb_ni, ub_ni)) for model in [x3c.X3CModel("models/Spiralus_STAT_bimodal_ni.fml")]][0], #+
+        "rounded": [(model.A.shape[1], hopsy.round(hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), lb_ni, ub_ni))) for model in [x3c.X3CModel("models/Spiralus_STAT_bimodal_ni.fml")]][0], #+
+    },
+}
+
+lb, ub = [0, 0], [2, 2]
+lb_ni, ub_ni = [0, 0, 0], [2, 2, 100]
+
+small_bound_problems = {
+    "STAT-1": {
+        "default": [(model.A.shape[1], hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), lb, ub)) for model in [x3c.X3CModel("models/Spiralus_STAT_unimodal.fml")]][0],
+        "rounded": [(model.A.shape[1], hopsy.round(hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), lb, ub))) for model in [x3c.X3CModel("models/Spiralus_STAT_unimodal.fml")]][0],
+    },
+    "STAT-1-ni": {
+        "default": [(model.A.shape[1], hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), lb_ni, ub_ni)) for model in [x3c.X3CModel("models/Spiralus_STAT_unimodal_ni.fml")]][0], 
+        "rounded": [(model.A.shape[1], hopsy.round(hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), lb_ni, ub_ni))) for model in [x3c.X3CModel("models/Spiralus_STAT_unimodal_ni.fml")]][0], 
+    },
+    "STAT-2": {
+        "default": [(model.A.shape[1], hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model, model.initial_point), lb, ub)) for model in [x3c.X3CModel("models/Spiralus_STAT_bimodal.fml")]][0], #+
+        "rounded": [(model.A.shape[1], hopsy.round(hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), lb, ub))) for model in [x3c.X3CModel("models/Spiralus_STAT_bimodal.fml")]][0], #+
+    },
+    "STAT-2-ni": {
+        "default": [(model.A.shape[1], hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), lb_ni, ub_ni)) for model in [x3c.X3CModel("models/Spiralus_STAT_bimodal_ni.fml")]][0], #+
+        "rounded": [(model.A.shape[1], hopsy.round(hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), lb_ni, ub_ni))) for model in [x3c.X3CModel("models/Spiralus_STAT_bimodal_ni.fml")]][0], #+
     },
 }
 
@@ -58,7 +81,7 @@ starting_points = {
         "rounded": [],
     },
     "STAT-1-ni": {
-        "default": [[.6, .05, 1]],
+        "default": [[.6, 1, .05]],
         "rounded": [], 
     },
     "STAT-2": {
@@ -66,7 +89,7 @@ starting_points = {
         "rounded": [],
     },
     "STAT-2-ni": {
-        "default": [[.7, 0.01, 1], [.1, 0.01, 1]],
+        "default": [[.7, 1, 0.01], [.1, 1, 0.01]],
         "rounded": [],
     },
 }
@@ -95,6 +118,8 @@ rounding = {
 
 m, l = 0, 1
 a, b = -5, 3
+
+fine, coarse = 16, 5 
 
 def get_stepsize_grid(_m, _l, _a=a, _b=b):
     return 10**np.hstack([
@@ -143,13 +168,14 @@ grid_params = {
 stepsize_grids = {(problem, proposal): get_stepsize_grid(*grid_params[(problem, proposal)]) if (problem, proposal) in grid_params else get_stepsize_grid(-1, 1) for problem in problems for proposal in proposals}
 
 targets = {
-    "neff": (lambda rhat, elapsed, accrate, states: [np.min(hopsy.ess(states))]*n_chains),
-    "neff/t": (lambda rhat, elapsed, accrate, states: [np.min(hopsy.ess(states)) / (elapsed / states.shape[1])]*n_chains),
+    "neff": (lambda rhat, elapsed, accrate, states: [np.min(hopsy.ess(states, relative=True))]*n_chains),
+    "neff/t": (lambda rhat, elapsed, accrate, states: [np.min(hopsy.ess(states, relative=True)) / (elapsed / states.shape[1])]*n_chains),
     "rhat": (lambda rhat, elapsed, accrate, states: [rhat]*n_chains),
     "acc": (lambda rhat, elapsed, accrate, states: np.mean(accrate, axis=0)),
     "esjd": (lambda rhat, elapsed, accrate, states: np.mean(np.linalg.norm(np.diff(states, axis=1), axis=-1)**2, axis=-1)),
     "esjd/t": (lambda rhat, elapsed, accrate, states: np.mean(np.linalg.norm(np.diff(states, axis=1), axis=-1)**2, axis=-1) / (elapsed / states.shape[1])),
     "t": (lambda rhat, elapsed, accrate, states: [elapsed / states.shape[1]]*n_chains),
+    "n": (lambda rhat, elapsed, accrate, states: [states.shape[1]]*n_chains),
 }
 
 target_display_names = {
@@ -162,9 +188,32 @@ target_display_names = {
     "t":      "$T/n$",
 }
 
+opt_sampling = {'STAT-1': ('Gaussian\nHit-And-Run', 1), 'STAT-1-ni': ('Gaussian\nHit-And-Run', 1), 'STAT-2': ('Gaussian\nHit-And-Run', 1), 'STAT-2-ni': ('Gaussian\nHit-And-Run', 1)}
+
+n_test_samples = 100
+
+ts_params = {
+    "lower_bound": 10**a,
+    "upper_bound": 10**b,
+    "grid_size": (b-a)*10 + 1,
+    "record_data": True,
+    "n_convergence": 20,
+}
+
+tuning_targets = {
+    "Acceptance\nRate\n(1-norm)": lambda mcs, dim: hopsy.AcceptanceRateTarget(mcs, n_test_samples=n_test_samples*dim**n_samples_order),
+    "Acceptance\nRate\n(2-norm)": lambda mcs, dim: hopsy.AcceptanceRateTarget(mcs, n_test_samples=n_test_samples*dim**n_samples_order, order=2),
+    "ESJD": lambda mcs, dim: hopsy.ExpectedSquaredJumpDistanceTarget(mcs, n_test_samples=n_test_samples*dim**n_samples_order),
+    "1,5-ESJD": lambda mcs, dim: hopsy.ExpectedSquaredJumpDistanceTarget(mcs, n_test_samples=n_test_samples*dim**n_samples_order, lags=[1, 5]),
+    "ESJD/s": lambda mcs, dim: hopsy.ExpectedSquaredJumpDistanceTarget(mcs, n_test_samples=n_test_samples*dim**n_samples_order, consider_time_cost=True),
+    "1,5-ESJD/s": lambda mcs, dim: hopsy.ExpectedSquaredJumpDistanceTarget(mcs, n_test_samples=n_test_samples*dim**n_samples_order, consider_time_cost=True, lags=[1, 5]),
+}
+
+
+
 def uniform_sampling(problem, dim, starting_points, seed):
     _problem = hopsy.Problem(problem.A, problem.b, transformation=problem.transformation, shift=problem.shift)
-    mcs = [hopsy.MarkovChain(_problem, hopsy.GaussianHitAndRunProposal, starting_points[i]) for i in range(n_chains)]
+    mcs = [hopsy.MarkovChain(_problem, hopsy.UniformHitAndRunProposal, starting_points[i]) for i in range(n_chains)]
     rngs = [hopsy.RandomNumberGenerator(seed, i) for i in range(n_chains)]
 
     accrate, states = hopsy.sample(mcs, rngs, int(n_samples), int(100*dim), 1)
@@ -181,8 +230,6 @@ def uniform_sampling(problem, dim, starting_points, seed):
         
     return states
 
-
-opt_sampling = {'STAT-1': ('Gaussian\nHit-And-Run', 0.1), 'STAT-1-ni': ('Gaussian\nHit-And-Run', 0.1), 'STAT-2': ('Gaussian\nHit-And-Run', 0.1), 'STAT-2-ni': ('Gaussian\nHit-And-Run', 1)}
 
 def posterior_sampling(Proposal, problem, dim, starting_points, stepsize, seed):
     mcs = [hopsy.MarkovChain(problem, Proposal, starting_points[i]) for i in range(n_chains)]
@@ -240,7 +287,83 @@ def bruteforce_sampling(Proposal, problem, dim, starting_points, stepsize, seed)
     return result
 
 
-def get_bruteforce_args():
+def tuning(Proposal, problem, dim, target, starting_points, seed):
+    mcs = [hopsy.MarkovChain(problem, Proposal, starting_points[i]) for i in range(n_chains)]
+    target_estimator = tuning_targets[target](mcs, dim)
+
+    ts = hopsy.ThompsonSamplingTuning(**ts_params, random_seed=seed)
+    rngs = [hopsy.RandomNumberGenerator(seed, i) for i in range(n_chains)]
+
+    elapsed = time.time()
+    stepsize, posterior = hopsy.tune(ts, target_estimator, rngs)
+    elapsed = time.time() - elapsed
+
+    return (elapsed, stepsize, posterior)
+
+
+def get_uniform_args():
+    args = []
+    args_idx = []
+    args_key = []
+
+    for problem_key in small_bound_problems:
+        n_jobs = len(args)
+        variant = "rounded"
+        dim, problem = small_bound_problems[problem_key][variant]
+        
+        for seed in range(1):
+            rng = hopsy.RandomNumberGenerator(seed, n_chains)
+            uniform = hopsy.Uniform(0, len(starting_points[problem_key][variant]))
+            draws = [int(uniform(rng)) for i in range(n_chains)]
+
+            _starting_points = [starting_points[problem_key][variant][i] for i in draws]
+            
+            args += [(problem, dim, _starting_points, seed)]
+
+    args_idx += [problem for problem in problems]
+
+    return args, args_idx
+
+
+def get_posterior_args(prior=None):
+    args = []
+    args_idx = []
+    args_key = []
+
+    for problem_key in problems:
+        n_jobs = len(args)
+        variant = "rounded"
+        dim, problem = small_bound_problems[problem_key][variant]
+        
+        for seed in range(1):
+            if prior is not None:
+                _prior = prior[problem_key].reshape(-1, dim)
+
+                rng = hopsy.RandomNumberGenerator(seed, n_chains)
+                uniform = hopsy.Uniform(0, _prior.shape[0])
+                draws = [int(uniform(rng)) for i in range(n_chains)]
+
+                _starting_points = [_prior[i] for i in draws]
+                T, s = problem.transformation, problem.shift
+                _starting_points = [np.linalg.solve(T, x - s) for x in _starting_points]
+            else:
+                rng = hopsy.RandomNumberGenerator(seed, n_chains)
+                uniform = hopsy.Uniform(0, len(starting_points[problem_key][variant]))
+                draws = [int(uniform(rng)) for i in range(n_chains)]
+
+                _starting_points = [starting_points[problem_key][variant][i] for i in draws]
+            
+            Proposal = proposals[opt_sampling[problem_key][0]]
+            stepsize = opt_sampling[problem_key][1]
+            
+            args += [(Proposal, problem, dim, _starting_points, stepsize, seed)]
+
+    args_idx += [problem for problem in problems]
+
+    return args, args_idx
+
+
+def get_bruteforce_args(prior=None):
     args = []
     args_idx = []
     args_key = []
@@ -258,11 +381,25 @@ def get_bruteforce_args():
 
             for stepsize in stepsize_grids[(problem_key, proposal_key)]:
                 for seed in range(n_seeds):
-                    rng = hopsy.RandomNumberGenerator(seed, n_chains)
-                    uniform = hopsy.Uniform(0, len(starting_points[problem_key][variant]))
-                    draws = [int(uniform(rng)) for i in range(n_chains)]
+                    if prior is not None:
+                        _prior = prior[problem_key].reshape(-1, dim)
+                        
+                        rng = hopsy.RandomNumberGenerator(seed, n_chains)
+                        uniform = hopsy.Uniform(0, _prior.shape[0])
+                        draws = [int(uniform(rng)) for i in range(n_chains)]
 
-                    _starting_points = [starting_points[problem_key][variant][i] for i in draws]
+                        _starting_points = [_prior[i] for i in draws]
+                    
+                        if variant == "rounded":
+                            T, s = problem.transformation, problem.shift
+                            _starting_points = [np.linalg.solve(T, x - s) for x in _starting_points]
+                    else:
+                        rng = hopsy.RandomNumberGenerator(seed, n_chains)
+                        uniform = hopsy.Uniform(0, len(starting_points[problem_key][variant]))
+                        draws = [int(uniform(rng)) for i in range(n_chains)]
+
+                        _starting_points = [starting_points[problem_key][variant][i] for i in draws]
+                        
 
                     args += [(Proposal, problem, dim, _starting_points, stepsize, seed)]
 
@@ -274,52 +411,34 @@ def get_bruteforce_args():
     return args, args_idx
 
 
-def get_posterior_args():
+def get_tuning_args():
+    #def tuning(Proposal, problem, dim, target, starting_points, seed):
     args = []
     args_idx = []
-    args_key = []
 
     for problem_key in problems:
-        n_jobs = len(args)
-        variant = "rounded"
-        dim, problem = problems[problem_key][variant]
-        
-        for seed in range(1):
-            rng = hopsy.RandomNumberGenerator(seed, n_chains)
-            uniform = hopsy.Uniform(0, len(starting_points[problem_key][variant]))
-            draws = [int(uniform(rng)) for i in range(n_chains)]
+        _problems = problems[problem_key]
+        for proposal_key, Proposal in proposals.items():
+            if rounding[proposal_key]:
+                variant = "rounded"
+            else:
+                variant = "default"
 
-            _starting_points = [starting_points[problem_key][variant][i] for i in draws]
+            dim, problem = _problems[variant]
+
+            for target in tuning_targets:
+                for seed in range(n_seeds):
+                    rng = hopsy.RandomNumberGenerator(seed, n_chains)
+                    uniform = hopsy.Uniform(0, len(starting_points[problem_key][variant]))
+                    draws = [int(uniform(rng)) for i in range(n_chains)]
+
+                    _starting_points = [starting_points[problem_key][variant][i] for i in draws]
+                        
+                    args += [(Proposal, problem, dim, target, _starting_points, seed)]
             
-            Proposal = proposals[opt_sampling[problem_key][0]]
-            stepsize = opt_sampling[problem_key][1]
-            
-            args += [(Proposal, problem, dim, _starting_points, stepsize, seed)]
-
-    args_idx += [problem for problem in problems]
-
-    return args, args_idx
-
-
-def get_uniform_args():
-    args = []
-    args_idx = []
-    args_key = []
-
-    for problem_key in problems:
-        n_jobs = len(args)
-        variant = "rounded"
-        dim, problem = problems[problem_key][variant]
-        
-        for seed in range(1):
-            rng = hopsy.RandomNumberGenerator(seed, n_chains)
-            uniform = hopsy.Uniform(0, len(starting_points[problem_key][variant]))
-            draws = [int(uniform(rng)) for i in range(n_chains)]
-
-            _starting_points = [starting_points[problem_key][variant][i] for i in draws]
-            
-            args += [(problem, dim, _starting_points, seed)]
-
-    args_idx += [problem for problem in problems]
+    args_idx += [(problem, proposal, target, seed) for problem in problems
+                                                   for proposal in proposals
+                                                   for target in tuning_targets
+                                                   for seed in range(n_seeds)]
 
     return args, args_idx

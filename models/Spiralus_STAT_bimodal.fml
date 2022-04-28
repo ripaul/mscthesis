@@ -42,10 +42,10 @@
       <reduct cfg="C#1@1 C#2@1" id="E"/>
       <rproduct cfg="C#1@1 C#2@1" id="H"/>
     </reaction>
-    <reaction id="h_ouz">
+    <reaction id="h_out">
       <reduct cfg="C#1@1 C#2@1" id="H"/>
     </reaction>
-    <reaction id="g_ouz">
+    <reaction id="g_out">
       <reduct cfg="C#1@1" id="G"/>
     </reaction>
     <reaction id="f_out">

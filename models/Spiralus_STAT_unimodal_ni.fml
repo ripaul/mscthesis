@@ -22,7 +22,7 @@
             <reduct cfg="C#1@2 C#2@2" id="E"/>
             <rproduct cfg="C#1@1 C#2@1 C#1@2 C#2@2" id="C"/>
         </reaction>
-        <reaction bidirectional="false" id="w">
+        <reaction bidirectional="true" id="w">
             <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1" id="C"/>
             <rproduct cfg="C#2@1 C#3@1 C#4@1" id="D"/>
             <rproduct cfg="C#1@1" id="F"/>
@@ -32,7 +32,7 @@
             <rproduct cfg="C#1@1 C#2@1" id="E"/>
             <rproduct cfg="C#3@1" id="G"/>
         </reaction>
-        <reaction bidirectional="true" id="q">
+        <reaction bidirectional="false" id="q">
             <reduct cfg="C#1@1 C#2@1" id="B"/>
             <rproduct cfg="C#1@1 C#2@1" id="E"/>
         </reaction>

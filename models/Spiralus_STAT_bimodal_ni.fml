@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <fluxml xmlns="http://www.13cflux.net/fluxml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <info>
+    <version>4</version>
+    <comment>KN: Spiral-Beispiel mit MS und Pool-Messungen</comment>
+  </info>
   <reactionnetwork>
     <metabolitepools>
       <pool atoms="2" id="A"/>
@@ -20,7 +24,7 @@
       <rproduct cfg="C#1@1 C#2@1" id="E"/>
       <rproduct cfg="C#3@1" id="G"/>
     </reaction>
-    <reaction bidirectional="true" id="q">
+    <reaction bidirectional="false" id="q">
       <reduct cfg="C#1@1 C#2@1" id="B"/>
       <rproduct cfg="C#1@1 C#2@1" id="E"/>
     </reaction>
@@ -29,7 +33,7 @@
       <reduct cfg="C#1@2 C#2@2" id="E"/>
       <rproduct cfg="C#1@1 C#2@1 C#1@2 C#2@2" id="C"/>
     </reaction>
-    <reaction bidirectional="false" id="w">
+    <reaction bidirectional="true" id="w">
       <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1" id="C"/>
       <rproduct cfg="C#2@1 C#3@1 C#4@1" id="D"/>
       <rproduct cfg="C#1@1" id="F"/>
@@ -38,13 +42,13 @@
       <reduct cfg="C#1@1 C#2@1" id="E"/>
       <rproduct cfg="C#1@1 C#2@1" id="H"/>
     </reaction>
-    <reaction id="H_out">
+    <reaction id="h_out">
       <reduct cfg="C#1@1 C#2@1" id="H"/>
     </reaction>
-    <reaction id="G_out">
+    <reaction id="g_out">
       <reduct cfg="C#1@1" id="G"/>
     </reaction>
-    <reaction id="F_out">
+    <reaction id="f_out">
       <reduct cfg="C#1@1" id="F"/>
     </reaction>
   </reactionnetwork>
