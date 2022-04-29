@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<fluxml xmlns="http://www.13cflux.net/fluxml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <info>
+    <version>4</version>
+    <comment>KN: Spiral-Beispiel mit MS und Pool-Messungen</comment>
+  </info>
+  <reactionnetwork>
+    <metabolitepools>
+      <pool atoms="2" id="A"/>
+      <pool atoms="2" id="B"/>
+      <pool atoms="4" id="C"/>
+      <pool atoms="3" id="D"/>
+      <pool atoms="2" id="E"/>
+      <pool atoms="1" id="F"/>
+      <pool atoms="1" id="G"/>
+      <pool atoms="2" id="H"/>
+    </metabolitepools>
+    <reaction bidirectional="false" id="u">
+      <reduct cfg="C#1@1 C#2@1" id="A"/>
+      <rproduct cfg="C#1@1 C#2@1" id="B"/>
+    </reaction>
+    <reaction bidirectional="false" id="p">
+      <reduct cfg="C#1@1 C#2@1 C#3@1" id="D"/>
+      <rproduct cfg="C#1@1 C#2@1" id="E"/>
+      <rproduct cfg="C#3@1" id="G"/>
+    </reaction>
+    <reaction bidirectional="false" id="q">
+      <reduct cfg="C#1@1 C#2@1" id="B"/>
+      <rproduct cfg="C#1@1 C#2@1" id="E"/>
+    </reaction>
+    <reaction bidirectional="false" id="v">
+      <reduct cfg="C#1@1 C#2@1" id="B"/>
+      <reduct cfg="C#1@2 C#2@2" id="E"/>
+      <rproduct cfg="C#1@1 C#2@1 C#1@2 C#2@2" id="C"/>
+    </reaction>
+    <reaction bidirectional="false" id="w">
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1" id="C"/>
+      <rproduct cfg="C#2@1 C#3@1 C#4@1" id="D"/>
+      <rproduct cfg="C#1@1" id="F"/>
+    </reaction>
+    <reaction bidirectional="false" id="r">
+      <reduct cfg="C#1@1 C#2@1" id="E"/>
+      <rproduct cfg="C#1@1 C#2@1" id="H"/>
+    </reaction>
+    <reaction id="h_ouz">
+      <reduct cfg="C#1@1 C#2@1" id="H"/>
+    </reaction>
+    <reaction id="g_ouz">
+      <reduct cfg="C#1@1" id="G"/>
+    </reaction>
+    <reaction id="f_out">
+      <reduct cfg="C#1@1" id="F"/>
+    </reaction>
+  </reactionnetwork>
+  <constraints>
+    <net>
+      <textual>u&lt;= 5;u&gt;= 0;q&lt;= 5;q&gt;= 0;q&lt;=u;</textual>
+    </net>
+    <psize>
+      <textual>B&lt;= 100;B&gt;= 5;C&lt;= 100;C&gt;= 5;D&lt;= 100;D&gt;= 5;E&lt;= 100;E&gt;= 5;F&lt;= 100;F&gt;= 5;G&lt;= 100;G&gt;= 5;H&lt;= 100;H&gt;= 5;</textual>
+    </psize>
+  </constraints>
+  <configuration name="default" stationary="false" time="750">
+    <comment>Spiralus</comment>
+    <input pool="A" type="isotopomer">
+      <label cfg="00">0</label>
+      <label cfg="01">1</label>
+      <label cfg="10">0</label>
+      <label cfg="11">0</label>
+    </input>
+    <measurement>
+      <model>
+        <fluxmeasurement>
+          <netflux id="fm_u">
+            <textual>u</textual>
+          </netflux>
+        </fluxmeasurement>
+        <labelingmeasurement>
+          <group id="H[1,2]#M0,1,2" scale="one" times="0,10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200,210,220,230,240,250,260,270,280,290,300,310,320,330,340,350,360,370,380,390,400,410,420,430,440,450,460,470,480,490,500,510,520,530,540,550,560,570,580,590,600,610,620,630,640,650,660,670,680,690,700,710,720,730,740,750,760,770,780,790,800">
+            <textual>H[1,2]#M0,1,2</textual>
+          </group>
+        </labelingmeasurement>
+        <poolsizemeasurement>
+          <poolsize id="psm_H">
+            <textual>H</textual>
+          </poolsize>
+        </poolsizemeasurement>
+      </model> <data>
+        <datum id="fm_u" stddev=".05">1</datum>
+        <datum id="psm_H" stddev="7.5">50</datum>
+        <!-- begin labeling -->
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="0" weight="0">.9779461032128914</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="10" weight="0">.9746644756935993</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="20" weight="0">.9591828616383611</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="30" weight="0">.9313128790035322</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="40" weight="0">.8943684919824487</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="50" weight="0">.8516861849082065</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="60" weight="0">.8058113055854701</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="70" weight="0">.7583960011508926</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="80" weight="0">.7106773215256171</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="90" weight="0">.6634337765759909</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="100" weight="0">.617259738851394</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="110" weight="0">.5724988752074042</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="120" weight="0">.529423255283107</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="130" weight="0">.4881663922922278</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="140" weight="0">.44910907946179096</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="150" weight="0">.41213329768797713</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="160" weight="0">.3773207325956086</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="170" weight="0">.34469764266497566</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="180" weight="0">.3142146184510045</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="190" weight="0">.2859198532598739</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="200" weight="0">.25966379113445587</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="210" weight="0">.2354447521969365</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="220" weight="0">.21308800373232073</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="230" weight="0">.19250408235688138</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="240" weight="0">.17375111234999915</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="250" weight="0">.1567941346064809</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="260" weight="0">.1412439546178199</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="270" weight="0">.12690511949191996</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="280" weight="0">.11404236569631221</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="290" weight="0">.10254282683244909</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="300" weight="0">.09177174126883525</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="310" weight="0">.08238147937562046</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="320" weight="0">.07379507850407607</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="330" weight="0">.06590112691449146</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="340" weight="0">.059156754675578294</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="350" weight="0">.05255130882560699</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="360" weight="0">.04722470497448811</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="370" weight="0">.04181667879295331</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="380" weight="0">.03765832036304512</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="390" weight="0">.033234220121611535</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="400" weight="0">.02997172247547486</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="410" weight="0">.026425212518301655</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="420" weight="0">.02375392985052449</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="430" weight="0">.020996791741724086</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="440" weight="0">.01881919042602037</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="450" weight="0">.016663326102078935</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="460" weight="0">.01491925195750482</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="470" weight="0">.013247743539070433</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="480" weight="0">.011673361421590006</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="490" weight="0">.010518524867266288</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="500" weight="0">.009252709053621855</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="510" weight="0">.008316332938385046</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="520" weight="0">.007381446877481962</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="530" weight="0">.006446560816578989</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="540" weight="0">.005847349784309702</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="550" weight="0">.0051767105515068135</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="560" weight="0">.004506071318703869</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="570" weight="0">.0041023916405017735</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="580" weight="0">.003638533146481132</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="590" weight="0">.003174674652460463</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="600" weight="0">.002866444572215354</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="610" weight="0">.0025605583338846882</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="620" weight="0">.00225467209555405</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="630" weight="0">.0019794409787153022</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="640" weight="0">.0017898369475199127</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="650" weight="0">.001600232916324662</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="660" weight="0">.0014106288851292448</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="670" weight="0">.0012226088583004446</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="680" weight="0">.001114136315872205</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="690" weight="0">.001005663773443799</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="700" weight="0">.0008951019414126515</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="710" weight="0">.0007403204057913615</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="720" weight="0">.0006848936423278773</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="730" weight="0">.0006294668788642543</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="740" weight="0">.0005740401154006869</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="750" weight="0">.00047154830695939065</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="760" weight="0">.00040079943155196807</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="770" weight="0">.00037189213342067595</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="780" weight="0">.0003429848352893561</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="790" weight="0">.0003093615941659189</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="800" weight="0">.0002549187266856767</datum>
+
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="0" weight="1">.02193064877145287</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="10" weight="1">.02521290587624335</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="20" weight="1">.04069473635912574</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="30" weight="1">.06856115574445196</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="40" weight="1">.10548964713120298</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="50" weight="1">.1481333021861643</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="60" weight="1">.19392729393239252</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="70" weight="1">.2411899873267693</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="80" weight="1">.288655534422919</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="90" weight="1">.3354799795105543</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="100" weight="1">.38105084609143064</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="110" weight="1">.42492058146182965</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="120" weight="1">.46683231824017546</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="130" weight="1">.5065320312859347</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="140" weight="1">.5436494086156982</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="150" weight="1">.5782764867148307</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="160" weight="1">.6102909179067081</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="170" weight="1">.6396743727666439</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="180" weight="1">.6665360577758195</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="190" weight="1">.6907699703703436</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="200" weight="1">.7126484123889398</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="210" weight="1">.7321320241421815</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="220" weight="1">.7495114943854781</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="230" weight="1">.764889653862473</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="240" weight="1">.7782720369562044</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="250" weight="1">.7897460107919123</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="260" weight="1">.7997506011717154</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="270" weight="1">.8085320237955637</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="280" weight="1">.8158650501897551</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="290" weight="1">.8219132892016023</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="300" weight="1">.8273410209534824</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="310" weight="1">.8315261841130589</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="320" weight="1">.8350771232081602</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="330" weight="1">.8381002746010794</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="340" weight="1">.8401654855669014</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="350" weight="1">.8423515919233837</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="360" weight="1">.843474030213907</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="370" weight="1">.8448858179159082</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="380" weight="1">.8452696385753069</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="390" weight="1">.8461974731553077</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="400" weight="1">.8461144388086872</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="410" weight="1">.84659942908414</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="420" weight="1">.8464396532805613</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="430" weight="1">.8465222727320125</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="440" weight="1">.8462530554396723</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="450" weight="1">.8461662778545642</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="460" weight="1">.8457195379521238</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="470" weight="1">.8455608608664108</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="480" weight="1">.8453050574797438</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="490" weight="1">.8448810706297984</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="500" weight="1">.8446790422984943</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="510" weight="1">.8441974906905656</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="520" weight="1">.843980890708754</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="530" weight="1">.8437642907269423</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="540" weight="1">.8433409928192126</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="550" weight="1">.843131046458214</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="560" weight="1">.8429211000972154</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="570" weight="1">.842584145071456</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="580" weight="1">.8423930151824499</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="590" weight="1">.8422018852934439</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="600" weight="1">.8419602131151427</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="610" weight="1">.8417930444304492</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="620" weight="1">.8416258757457559</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="630" weight="1">.8414752456498386</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="640" weight="1">.8413341965942922</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="650" weight="1">.8411931475387457</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="660" weight="1">.8410520984831994</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="670" weight="1">.8410001021960452</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="680" weight="1">.8408862711562773</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="690" weight="1">.8407724401165096</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="700" weight="1">.8406627876559478</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="710" weight="1">.8406748633428163</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="720" weight="1">.8405875842575272</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="730" weight="1">.8405003051722382</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="740" weight="1">.8404130260869491</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="750" weight="1">.8404198770916155</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="760" weight="1">.840403929791522</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="770" weight="1">.8403461409141523</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="780" weight="1">.8402883520367825</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="790" weight="1">.840239995045397</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="800" weight="1">.8402332773067251</datum>
+
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="0" weight="2">.0001232480156556566</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="10" weight="2">.0001226184301573367</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="20" weight="2">.0001224020025131878</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="30" weight="2">.00012596525201583102</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="40" weight="2">.00014186088634830546</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="50" weight="2">.00018051290562933592</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="60" weight="2">.0002614004821374344</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="70" weight="2">.00041401152233819303</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="80" weight="2">.0006671440514638672</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="90" weight="2">.0010862439134547955</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="100" weight="2">.0016894150571752945</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="110" weight="2">.002580543330766157</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="120" weight="2">.0037444264767175247</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="130" weight="2">.005301576421837442</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="140" weight="2">.007241511922510918</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="150" weight="2">.009590215597192099</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="160" weight="2">.012388349497683302</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="170" weight="2">.015627984568380538</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="180" weight="2">.019249323773176032</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="190" weight="2">.023310176369782547</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="200" weight="2">.027687796476604312</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="210" weight="2">.03242322366088203</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="220" weight="2">.03740050188220112</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="230" weight="2">.04260626378064568</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="240" weight="2">.047976850693796445</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="250" weight="2">.05345985460160685</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="260" weight="2">.05900544421046476</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="270" weight="2">.06456285671251633</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="280" weight="2">.07009258411393271</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="290" weight="2">.07554388396594855</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="300" weight="2">.08088723777768234</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="310" weight="2">.08609233651132067</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="320" weight="2">.0911277982877638</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="330" weight="2">.0959985984844291</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="340" weight="2">.10067775975752036</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="350" weight="2">.10509709925100931</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="360" weight="2">.10930126481160485</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="370" weight="2">.11329750329113854</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="380" weight="2">.11707204106164808</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="390" weight="2">.12056830672308085</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="400" weight="2">.12391383871583789</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="410" weight="2">.1269753583975583</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="420" weight="2">.12980641686891428</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="430" weight="2">.13248093552626344</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="440" weight="2">.13492775413430735</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="450" weight="2">.1371703960433569</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="460" weight="2">.13936121009037133</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="470" weight="2">.14119139559451876</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="480" weight="2">.14302158109866617</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="490" weight="2">.14460040450293526</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="500" weight="2">.1460682486478838</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="510" weight="2">.1474861763710493</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="520" weight="2">.148637662413764</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="530" weight="2">.1497891484564787</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="540" weight="2">.15081165739647776</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="550" weight="2">.15169224299027922</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="560" weight="2">.1525728285840807</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="570" weight="2">.15331346328804227</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="580" weight="2">.153968451671069</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="590" weight="2">.15462344005409573</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="600" weight="2">.15517334231264196</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="610" weight="2">.15564639723566603</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="620" weight="2">.15611945215869008</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="630" weight="2">.15654531337144614</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="640" weight="2">.15687596645818788</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="650" weight="2">.15720661954492965</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="660" weight="2">.15753727263167142</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="670" weight="2">.15777728894565451</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="680" weight="2">.1579995925278505</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="690" weight="2">.1582218961100465</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="700" weight="2">.15844211040263959</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="710" weight="2">.15858481625139226</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="720" weight="2">.1587275221001449</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="730" weight="2">.15887022794889757</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="740" weight="2">.15901293379765025</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="750" weight="2">.15910857460142508</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="760" weight="2">.15919527077692608</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="770" weight="2">.15928196695242705</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="780" weight="2">.15936866312792805</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="790" weight="2">.159450643360437</datum>
+        <datum id="H[1,2]#M0,1,2" stddev="0.01" time="800" weight="2">.15951180396658912</datum>
+        <!-- end labeling measurements -->
+      </data>
+    </measurement>
+    <simulation method="auto" type="auto">
+      <!-- type="full" -->
+      <variables>
+        <fluxvalue flux="u" type="net">1</fluxvalue>
+        <fluxvalue flux="q" type="net">0.6</fluxvalue>
+        <poolsizevalue pool="B">10</poolsizevalue>
+        <poolsizevalue pool="C">15</poolsizevalue>
+        <poolsizevalue pool="D">20</poolsizevalue>
+        <poolsizevalue pool="E">25</poolsizevalue>
+        <poolsizevalue pool="F">10</poolsizevalue>
+        <poolsizevalue pool="G">10</poolsizevalue>
+        <poolsizevalue pool="H">50</poolsizevalue>
+      </variables>
+    </simulation>
+  </configuration>
+</fluxml>
