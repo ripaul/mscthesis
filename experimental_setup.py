@@ -34,7 +34,15 @@ N_max = 50
 lb, ub = -1000, 1000
 lb_ni, ub_ni = -1000, 1000
 
+dim = 20
+A, b = [[1] + [0] * (dim-1)], [ub]
+gauss = hopsy.Gaussian(dim)
+
 problems = {
+    "Gauss": {
+        "default": (dim, hopsy.add_box_constraints(hopsy.Problem(A, b, gauss), lb, ub)),
+        "rounded": (dim, hopsy.round(hopsy.add_box_constraints(hopsy.Problem(A, b, gauss), lb, ub))),
+    },
     "STAT-1": {
         "default": [(model.A.shape[1], hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), lb, ub)) for model in [x3c.X3CModel("models/Spiralus_STAT_unimodal.fml")]][0],
         "rounded": [(model.A.shape[1], hopsy.round(hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), lb, ub))) for model in [x3c.X3CModel("models/Spiralus_STAT_unimodal.fml")]][0],
@@ -50,32 +58,50 @@ problems = {
     "STAT-2-ni": {
         "default": [(model.A.shape[1], hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), lb_ni, ub_ni)) for model in [x3c.X3CModel("models/Spiralus_STAT_bimodal_ni.fml")]][0], #+
         "rounded": [(model.A.shape[1], hopsy.round(hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), lb_ni, ub_ni))) for model in [x3c.X3CModel("models/Spiralus_STAT_bimodal_ni.fml")]][0], #+
+    },
+    "INST": {
+        "default": [(model.A.shape[1], hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), lb_ni, ub_ni)) for model in [x3c.X3CModel("models/Spiralus_INST.fml")]][0], #+
+        "rounded": [(model.A.shape[1], hopsy.round(hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), lb_ni, ub_ni))) for model in [x3c.X3CModel("models/Spiralus_INST.fml")]][0], #+
     },
 }
 
-lb, ub = [0, 0], [2, 2]
-lb_ni, ub_ni = [0, 0, 0], [2, 2, 100]
+gauss_lb, gauss_ub = -3, 3
+stat_lb, stat_ub = [0, 0], [2, 2]
+stat_lb_ni, stat_ub_ni = [0, 0, 0], [2, 2, 100]
+inst_lb, inst_ub = 0, 100
 
 small_bound_problems = {
+    "Gauss": {
+        "default": (dim, hopsy.add_box_constraints(hopsy.Problem(A, b, gauss), gauss_lb, gauss_ub)),
+        "rounded": (dim, hopsy.round(hopsy.add_box_constraints(hopsy.Problem(A, b, gauss), gauss_lb, gauss_ub))),
+    },
     "STAT-1": {
-        "default": [(model.A.shape[1], hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), lb, ub)) for model in [x3c.X3CModel("models/Spiralus_STAT_unimodal.fml")]][0],
-        "rounded": [(model.A.shape[1], hopsy.round(hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), lb, ub))) for model in [x3c.X3CModel("models/Spiralus_STAT_unimodal.fml")]][0],
+        "default": [(model.A.shape[1], hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), stat_lb, stat_ub)) for model in [x3c.X3CModel("models/Spiralus_STAT_unimodal.fml")]][0],
+        "rounded": [(model.A.shape[1], hopsy.round(hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), stat_lb, stat_ub))) for model in [x3c.X3CModel("models/Spiralus_STAT_unimodal.fml")]][0],
     },
     "STAT-1-ni": {
-        "default": [(model.A.shape[1], hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), lb_ni, ub_ni)) for model in [x3c.X3CModel("models/Spiralus_STAT_unimodal_ni.fml")]][0], 
-        "rounded": [(model.A.shape[1], hopsy.round(hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), lb_ni, ub_ni))) for model in [x3c.X3CModel("models/Spiralus_STAT_unimodal_ni.fml")]][0], 
+        "default": [(model.A.shape[1], hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), stat_lb_ni, stat_ub_ni)) for model in [x3c.X3CModel("models/Spiralus_STAT_unimodal_ni.fml")]][0], 
+        "rounded": [(model.A.shape[1], hopsy.round(hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), stat_lb_ni, stat_ub_ni))) for model in [x3c.X3CModel("models/Spiralus_STAT_unimodal_ni.fml")]][0], 
     },
     "STAT-2": {
-        "default": [(model.A.shape[1], hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model, model.initial_point), lb, ub)) for model in [x3c.X3CModel("models/Spiralus_STAT_bimodal.fml")]][0], #+
-        "rounded": [(model.A.shape[1], hopsy.round(hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), lb, ub))) for model in [x3c.X3CModel("models/Spiralus_STAT_bimodal.fml")]][0], #+
+        "default": [(model.A.shape[1], hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model, model.initial_point), stat_lb, stat_ub)) for model in [x3c.X3CModel("models/Spiralus_STAT_bimodal.fml")]][0], #+
+        "rounded": [(model.A.shape[1], hopsy.round(hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), stat_lb, stat_ub))) for model in [x3c.X3CModel("models/Spiralus_STAT_bimodal.fml")]][0], #+
     },
     "STAT-2-ni": {
-        "default": [(model.A.shape[1], hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), lb_ni, ub_ni)) for model in [x3c.X3CModel("models/Spiralus_STAT_bimodal_ni.fml")]][0], #+
-        "rounded": [(model.A.shape[1], hopsy.round(hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), lb_ni, ub_ni))) for model in [x3c.X3CModel("models/Spiralus_STAT_bimodal_ni.fml")]][0], #+
+        "default": [(model.A.shape[1], hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), stat_lb_ni, stat_ub_ni)) for model in [x3c.X3CModel("models/Spiralus_STAT_bimodal_ni.fml")]][0], #+
+        "rounded": [(model.A.shape[1], hopsy.round(hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), stat_lb_ni, stat_ub_ni))) for model in [x3c.X3CModel("models/Spiralus_STAT_bimodal_ni.fml")]][0], #+
+    },
+    "INST": {
+        "default": [(model.A.shape[1], hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), inst_lb, inst_ub)) for model in [x3c.X3CModel("models/Spiralus_INST.fml")]][0], #+
+        "rounded": [(model.A.shape[1], hopsy.round(hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), inst_lb, inst_ub))) for model in [x3c.X3CModel("models/Spiralus_INST.fml")]][0], #+
     },
 }
 
 starting_points = {
+    "Gauss": {
+        "default": [[0] * dim],
+        "rounded": [],
+    },
     "STAT-1": {
         "default": [[.6, 1]],
         "rounded": [],
@@ -90,6 +116,10 @@ starting_points = {
     },
     "STAT-2-ni": {
         "default": [[.7, 1, 0.01], [.1, 1, 0.01]],
+        "rounded": [],
+    },
+    "INST": {
+        "default": [[10., 15., 20., 25., 10., 10., 50., 0.6, 1.]],
         "rounded": [],
     },
 }
@@ -188,7 +218,14 @@ target_display_names = {
     "t":      "$T/n$",
 }
 
-opt_sampling = {'STAT-1': ('Gaussian\nHit-And-Run', 1), 'STAT-1-ni': ('Gaussian\nHit-And-Run', 1), 'STAT-2': ('Gaussian\nHit-And-Run', 1), 'STAT-2-ni': ('Gaussian\nHit-And-Run', 1)}
+opt_sampling = {
+    'Gauss': ('Gaussian\nHit-And-Run', 1), 
+    'STAT-1': ('Rounding Gaussian\nHit-And-Run', 1), 
+    'STAT-1-ni': ('Rounding Gaussian\nHit-And-Run', 1), 
+    'STAT-2': ('Rounding Gaussian\nHit-And-Run', 1), 
+    'STAT-2-ni': ('Rounding Gaussian\nHit-And-Run', 1),
+    'INST': ('Rounding Gaussian\nHit-And-Run', 1),
+}
 
 n_test_samples = 100
 
