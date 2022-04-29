@@ -31,6 +31,8 @@ n_samples_order = 1
 rhat_threshold=1.05
 N_max = 50
 
+keep_n_samples = 500
+
 lb, ub = -1000, 1000
 lb_ni, ub_ni = -1000, 1000
 
@@ -59,10 +61,10 @@ problems = {
         "default": [(model.A.shape[1], hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), lb_ni, ub_ni)) for model in [x3c.X3CModel("models/Spiralus_STAT_bimodal_ni.fml")]][0], #+
         "rounded": [(model.A.shape[1], hopsy.round(hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), lb_ni, ub_ni))) for model in [x3c.X3CModel("models/Spiralus_STAT_bimodal_ni.fml")]][0], #+
     },
-    "INST": {
-        "default": [(model.A.shape[1], hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), lb_ni, ub_ni)) for model in [x3c.X3CModel("models/Spiralus_INST.fml")]][0], #+
-        "rounded": [(model.A.shape[1], hopsy.round(hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), lb_ni, ub_ni))) for model in [x3c.X3CModel("models/Spiralus_INST.fml")]][0], #+
-    },
+    #"INST": {
+    #    "default": [(model.A.shape[1], hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), lb_ni, ub_ni)) for model in [x3c.X3CModel("models/Spiralus_INST.fml")]][0], #+
+    #    "rounded": [(model.A.shape[1], hopsy.round(hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), lb_ni, ub_ni))) for model in [x3c.X3CModel("models/Spiralus_INST.fml")]][0], #+
+    #},
 }
 
 gauss_lb, gauss_ub = -3, 3
@@ -91,10 +93,10 @@ small_bound_problems = {
         "default": [(model.A.shape[1], hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), stat_lb_ni, stat_ub_ni)) for model in [x3c.X3CModel("models/Spiralus_STAT_bimodal_ni.fml")]][0], #+
         "rounded": [(model.A.shape[1], hopsy.round(hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), stat_lb_ni, stat_ub_ni))) for model in [x3c.X3CModel("models/Spiralus_STAT_bimodal_ni.fml")]][0], #+
     },
-    "INST": {
-        "default": [(model.A.shape[1], hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), inst_lb, inst_ub)) for model in [x3c.X3CModel("models/Spiralus_INST.fml")]][0], #+
-        "rounded": [(model.A.shape[1], hopsy.round(hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), inst_lb, inst_ub))) for model in [x3c.X3CModel("models/Spiralus_INST.fml")]][0], #+
-    },
+    #"INST": {
+    #    "default": [(model.A.shape[1], hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), inst_lb, inst_ub)) for model in [x3c.X3CModel("models/Spiralus_INST.fml")]][0], #+
+    #    "rounded": [(model.A.shape[1], hopsy.round(hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), inst_lb, inst_ub))) for model in [x3c.X3CModel("models/Spiralus_INST.fml")]][0], #+
+    #},
 }
 
 starting_points = {
@@ -219,12 +221,12 @@ target_display_names = {
 }
 
 opt_sampling = {
-    'Gauss': ('Gaussian\nHit-And-Run', 1), 
-    'STAT-1': ('Rounding Gaussian\nHit-And-Run', 1), 
-    'STAT-1-ni': ('Rounding Gaussian\nHit-And-Run', 1), 
-    'STAT-2': ('Rounding Gaussian\nHit-And-Run', 1), 
-    'STAT-2-ni': ('Rounding Gaussian\nHit-And-Run', 1),
-    'INST': ('Rounding Gaussian\nHit-And-Run', 1),
+    'Gauss': (hopsy.GaussianHitAndRunProposal, 1), 
+    'STAT-1': (hopsy.GaussianHitAndRunProposal, 1), 
+    'STAT-1-ni': (hopsy.GaussianHitAndRunProposal, 1), 
+    'STAT-2': (hopsy.GaussianHitAndRunProposal, 1), 
+    'STAT-2-ni': (hopsy.GaussianHitAndRunProposal, 1),
+    'INST': (hopsy.AdaptiveMetropolisProposal, 1),
 }
 
 n_test_samples = 100
@@ -247,26 +249,33 @@ tuning_targets = {
 }
 
 
+def uniform_sampling_single_arg(args):
+    return uniform_sampling(*args)
 
 def uniform_sampling(problem, dim, starting_points, seed):
     _problem = hopsy.Problem(problem.A, problem.b, transformation=problem.transformation, shift=problem.shift)
     mcs = [hopsy.MarkovChain(_problem, hopsy.UniformHitAndRunProposal, starting_points[i]) for i in range(n_chains)]
     rngs = [hopsy.RandomNumberGenerator(seed, i) for i in range(n_chains)]
 
-    accrate, states = hopsy.sample(mcs, rngs, int(n_samples), int(100*dim), 1)
+    accrate, states = hopsy.sample(mcs, rngs, int(n_samples), int(100*dim), n_chains)
     rhat = np.max(hopsy.rhat(states))
     
     i = 0
     while not(rhat < rhat_threshold) and i < N_max:
-        _accrate, _states = hopsy.sample(mcs, rngs, int(n_samples/100), int(100*dim), 1)
+        _accrate, _states = hopsy.sample(mcs, rngs, int(n_samples/100), int(100*dim), n_chains)
         
         states = np.concatenate([states, _states], axis=1)
         rhat = np.max(hopsy.rhat(states))
         
         i += 1
         
-    return states
+        
+    thinning = int(states.shape[1] / keep_n_samples)
+        
+    return states[:,::thinning]
 
+def posterior_sampling_single_arg(args):
+    return posterior_sampling(*args)
 
 def posterior_sampling(Proposal, problem, dim, starting_points, stepsize, seed):
     mcs = [hopsy.MarkovChain(problem, Proposal, starting_points[i]) for i in range(n_chains)]
@@ -285,7 +294,9 @@ def posterior_sampling(Proposal, problem, dim, starting_points, stepsize, seed):
         
         i += 1
         
-    return states
+    thinning = int(states.shape[1] / keep_n_samples)
+        
+    return states[:,::thinning]
 
 
 def bruteforce_sampling(Proposal, problem, dim, starting_points, stepsize, seed):
@@ -369,6 +380,10 @@ def get_posterior_args(prior=None):
 
     for problem_key in problems:
         n_jobs = len(args)
+        
+        Proposal = opt_sampling[problem_key][0]
+        stepsize = opt_sampling[problem_key][1]
+        
         variant = "rounded"
         dim, problem = small_bound_problems[problem_key][variant]
         
@@ -389,9 +404,6 @@ def get_posterior_args(prior=None):
                 draws = [int(uniform(rng)) for i in range(n_chains)]
 
                 _starting_points = [starting_points[problem_key][variant][i] for i in draws]
-            
-            Proposal = proposals[opt_sampling[problem_key][0]]
-            stepsize = opt_sampling[problem_key][1]
             
             args += [(Proposal, problem, dim, _starting_points, stepsize, seed)]
 
