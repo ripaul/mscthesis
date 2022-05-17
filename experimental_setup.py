@@ -21,7 +21,7 @@ from tqdm.notebook import tqdm
 
 dims = [2]#, 5, 10, 20]#, 30, 50]
 
-n_parallel = 50
+n_parallel = 60
 n_seeds = 5
 n_chains = 10
 
@@ -73,6 +73,10 @@ stat_lb_ni, stat_ub_ni = [0, 0, 0], [2, 2, 100]
 inst_lb, inst_ub = 0, 100
 
 small_bound_problems = {
+    "Simplicus": {
+        "default": [(model.A.shape[1], hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), stat_lb, stat_ub)) for model in [x3c.X3CModel("models/Simplicus.fml")]][0],
+        "rounded": [(model.A.shape[1], hopsy.round(hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model), stat_lb, stat_ub))) for model in [x3c.X3CModel("models/Simplicus.fml")]][0],
+    },
     "Gauss": {
         "default": (dim, hopsy.add_box_constraints(hopsy.Problem(A, b, gauss), gauss_lb, gauss_ub)),
         "rounded": (dim, hopsy.round(hopsy.add_box_constraints(hopsy.Problem(A, b, gauss), gauss_lb, gauss_ub))),
@@ -100,6 +104,10 @@ small_bound_problems = {
 }
 
 starting_points = {
+    "Simplicus": {
+        "default": [[.3, .2]],
+        "rounded": [],
+    },
     "Gauss": {
         "default": [[0] * dim],
         "rounded": [],
@@ -147,7 +155,7 @@ rounding = {
     proposal: (i >= len(proposals) - 3) for i, proposal in enumerate(proposals)
 }
 
-
+# fine stepsize interval is given as [m-l, m+l]
 m, l = 0, 1
 a, b = -5, 3
 
@@ -205,18 +213,20 @@ targets = {
     "rhat": (lambda rhat, elapsed, accrate, states: [rhat]*n_chains),
     "acc": (lambda rhat, elapsed, accrate, states: np.mean(accrate, axis=0)),
     "esjd": (lambda rhat, elapsed, accrate, states: np.mean(np.linalg.norm(np.diff(states, axis=1), axis=-1)**2, axis=-1)),
+    #"esjd": (lambda rhat, elapsed, accrate, states: np.mean(np.linalg.norm(np.diff(states, axis=1), axis=-1)**2, axis=-1)),
     "esjd/t": (lambda rhat, elapsed, accrate, states: np.mean(np.linalg.norm(np.diff(states, axis=1), axis=-1)**2, axis=-1) / (elapsed / states.shape[1])),
+    #"esjd/t": (lambda rhat, elapsed, accrate, states: np.mean(np.linalg.norm(np.diff(states, axis=1), axis=-1)**2, axis=-1) / (elapsed / states.shape[1])),
     "t": (lambda rhat, elapsed, accrate, states: [elapsed / states.shape[1]]*n_chains),
     "n": (lambda rhat, elapsed, accrate, states: [states.shape[1]]*n_chains),
 }
 
 target_display_names = {
     "neff":   r"min $n_{\mathrm{eff}}$",
-    "neff/t": r"min $n_{\mathrm{eff}}/t$",
+    "neff/t": r"min $n_{\mathrm{eff}}/s$",
     "rhat":   r"max $\hat{R}$",
     "acc":    "Acceptance rate",
     "esjd":   "ESJD",
-    "esjd/t": "$\mathrm{ESJD}/t$",
+    "esjd/t": "$\mathrm{ESJD}/s$",
     "t":      "$T/n$",
 }
 
@@ -232,6 +242,7 @@ opt_sampling = {
 n_test_samples = 100
 
 ts_params = {
+    "n_posterior_update": 100,
     "lower_bound": 10**a,
     "upper_bound": 10**b,
     "grid_size": (b-a)*10 + 1,
@@ -242,10 +253,19 @@ ts_params = {
 tuning_targets = {
     "Acceptance\nRate\n(1-norm)": lambda mcs, dim: hopsy.AcceptanceRateTarget(mcs, n_test_samples=n_test_samples*dim**n_samples_order),
     "Acceptance\nRate\n(2-norm)": lambda mcs, dim: hopsy.AcceptanceRateTarget(mcs, n_test_samples=n_test_samples*dim**n_samples_order, order=2),
-    "ESJD": lambda mcs, dim: hopsy.ExpectedSquaredJumpDistanceTarget(mcs, n_test_samples=n_test_samples*dim**n_samples_order),
-    "1,5-ESJD": lambda mcs, dim: hopsy.ExpectedSquaredJumpDistanceTarget(mcs, n_test_samples=n_test_samples*dim**n_samples_order, lags=[1, 5]),
-    "ESJD/s": lambda mcs, dim: hopsy.ExpectedSquaredJumpDistanceTarget(mcs, n_test_samples=n_test_samples*dim**n_samples_order, consider_time_cost=True),
-    "1,5-ESJD/s": lambda mcs, dim: hopsy.ExpectedSquaredJumpDistanceTarget(mcs, n_test_samples=n_test_samples*dim**n_samples_order, consider_time_cost=True, lags=[1, 5]),
+    "ESJD": lambda mcs, dim: hopsy.ExpectedSquaredJumpDistanceTarget(mcs, n_test_samples=n_test_samples*dim**n_samples_order, estimate_covariance=False),
+    "1,5-ESJD": lambda mcs, dim: hopsy.ExpectedSquaredJumpDistanceTarget(mcs, n_test_samples=n_test_samples*dim**n_samples_order, lags=[1, 5], estimate_covariance=False),
+    "ESJD/s": lambda mcs, dim: hopsy.ExpectedSquaredJumpDistanceTarget(mcs, n_test_samples=n_test_samples*dim**n_samples_order, consider_time_cost=True, estimate_covariance=False),
+    "1,5-ESJD/s": lambda mcs, dim: hopsy.ExpectedSquaredJumpDistanceTarget(mcs, n_test_samples=n_test_samples*dim**n_samples_order, consider_time_cost=True, lags=[1, 5], estimate_covariance=False),
+}
+
+target_map = {
+    "Acceptance\nRate\n(1-norm)": "acc",
+    "Acceptance\nRate\n(2-norm)": "acc",
+    "ESJD": "esjd",
+    "1,5-ESJD": "neff",
+    "ESJD/s": "esjd/t",
+    "1,5-ESJD/s": "neff/t",
 }
 
 
@@ -318,7 +338,7 @@ def bruteforce_sampling(Proposal, problem, dim, starting_points, stepsize, seed)
     i = 0
     while not(rhat < rhat_threshold) and i < N_max:
         elapsed = time.time() - elapsed
-        _accrate, _states = hopsy.sample(mcs, rngs, n_samples, dim)
+        _accrate, _states = hopsy.sample(mcs, rngs, dim * n_samples)
         elapsed = time.time() - elapsed
         
         accrate += [_accrate]
@@ -338,6 +358,9 @@ def bruteforce_sampling(Proposal, problem, dim, starting_points, stepsize, seed)
 def tuning(Proposal, problem, dim, target, starting_points, seed):
     mcs = [hopsy.MarkovChain(problem, Proposal, starting_points[i]) for i in range(n_chains)]
     target_estimator = tuning_targets[target](mcs, dim)
+    
+    if "Acceptance" in target and Proposal == hopsy.CSmMALAProposal:
+        target_estimator.acceptance_rate = 0.574
 
     ts = hopsy.ThompsonSamplingTuning(**ts_params, random_seed=seed)
     rngs = [hopsy.RandomNumberGenerator(seed, i) for i in range(n_chains)]
@@ -378,7 +401,7 @@ def get_posterior_args(prior=None):
     args_idx = []
     args_key = []
 
-    for problem_key in problems:
+    for problem_key in small_bound_problems:
         n_jobs = len(args)
         
         Proposal = opt_sampling[problem_key][0]
