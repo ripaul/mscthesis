@@ -10,7 +10,6 @@ import time
 from sklearn.neighbors import KernelDensity
 import matplotlib.pyplot as plt
 from matplotlib import cm
-from matplotlib.lines import Line2D
 
 import warnings
 from multiprocessing import Pool
@@ -268,6 +267,27 @@ target_map = {
     "1,5-ESJD/s": "neff/t",
 }
 
+tuning_problems = {
+    "Spiralus": {
+        "default": [(model.A.shape[1], hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model, model.initial_point), lb, ub)) for model in [x3c.X3CModel("models/Spiralus_INST.fml")]][0],
+        "rounded": [(model.A.shape[1], hopsy.round(hopsy.add_box_constraints(hopsy.Problem(model.A, model.b, model, model.initial_point), lb, ub))) for model in [x3c.X3CModel("models/Spiralus_INST.fml")]][0],
+    },
+    "Coryne": {
+        "default": [(model.A.shape[1], hopsy.Problem(model.A, model.b, model, model.initial_point)) for model in [x3c.X3CModel("models/Coryne.fml")]][0], 
+        "rounded": [(model.A.shape[1], hopsy.round(hopsy.Problem(model.A, model.b, model, model.initial_point))) for model in [x3c.X3CModel("models/Coryne.fml")]][0], 
+    },
+}
+
+starting_points["Spiralus"] = {
+    "default": [x3c.X3CModel("models/Spiralus_INST.fml").initial_point],
+    "rounded": hopsy.transform(tuning_problems["Spiralus"]["rounded"][1], [x3c.X3CModel("models/Spiralus_INST.fml").initial_point]),
+}
+
+starting_points["Coryne"] = {
+    "default": [x3c.X3CModel("models/Coryne.fml").initial_point],
+    "rounded": hopsy.transform(tuning_problems["Coryne"]["rounded"][1], [x3c.X3CModel("models/Coryne.fml").initial_point]),
+}
+
 
 def uniform_sampling_single_arg(args):
     return uniform_sampling(*args)
@@ -356,7 +376,10 @@ def bruteforce_sampling(Proposal, problem, dim, starting_points, stepsize, seed)
 
 
 def tuning(Proposal, problem, dim, target, starting_points, seed):
-    mcs = [hopsy.MarkovChain(problem, Proposal, starting_points[i]) for i in range(n_chains)]
+    if starting_points is not None:
+        mcs = [hopsy.MarkovChain(problem, Proposal, starting_points[i]) for i in range(n_chains)]
+    else:
+        mcs = [hopsy.MarkovChain(problem, Proposal) for i in range(n_chains)]
     target_estimator = tuning_targets[target](mcs, dim)
     
     if "Acceptance" in target and Proposal == hopsy.CSmMALAProposal:
@@ -369,18 +392,18 @@ def tuning(Proposal, problem, dim, target, starting_points, seed):
     stepsize, posterior = hopsy.tune(ts, target_estimator, rngs)
     elapsed = time.time() - elapsed
 
-    return (elapsed, stepsize, posterior)
+    return (elapsed, stepsize, (ts.n_converged < ts.n_posterior_updates), posterior)
 
 
-def get_uniform_args():
+def get_uniform_args(problems=small_bound_problems):
     args = []
     args_idx = []
     args_key = []
 
-    for problem_key in small_bound_problems:
+    for problem_key in problems:
         n_jobs = len(args)
         variant = "rounded"
-        dim, problem = small_bound_problems[problem_key][variant]
+        dim, problem = problems[problem_key][variant]
         
         for seed in range(1):
             rng = hopsy.RandomNumberGenerator(seed, n_chains)
@@ -512,5 +535,53 @@ def get_tuning_args():
                                                    for proposal in proposals
                                                    for target in tuning_targets
                                                    for seed in range(n_seeds)]
+
+    return args, args_idx
+
+
+def get_pure_tuning_args(prior=None):
+    #def tuning(Proposal, problem, dim, target, starting_points, seed):
+    args = []
+    args_idx = []
+
+    for problem_key in tuning_problems:
+        _problems = tuning_problems[problem_key]
+        for proposal_key, Proposal in proposals.items():
+            if proposal_key == "CSmMALA": continue
+            if rounding[proposal_key]:
+                variant = "rounded"
+            else:
+                variant = "default"
+
+            dim, problem = _problems[variant]
+
+            for target in tuning_targets:
+                for seed in range(n_seeds):
+                    args += [(Proposal, problem, dim, target, None, seed)]
+                    args_idx += [(problem_key, proposal_key, target, seed)]
+
+    return args, args_idx
+
+
+def get_validation_args(prior=None, stepsizes=None):
+    #def tuning(Proposal, problem, dim, target, starting_points, seed):
+    args = []
+    args_idx = []
+
+    for problem_key in tuning_problems:
+        _problems = tuning_problems[problem_key]
+        for proposal_key, Proposal in proposals.items():
+            if proposal_key == "CSmMALA": continue
+            if rounding[proposal_key]:
+                variant = "rounded"
+            else:
+                variant = "default"
+
+            dim, problem = _problems[variant]
+
+            for target in tuning_targets:
+                for seed in range(n_seeds):
+                    args += [(Proposal, problem, dim, target, None, seed)]
+                    args_idx += [(problem_key, proposal_key, target, seed)]
 
     return args, args_idx
