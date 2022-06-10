@@ -1,0 +1,1090 @@
+<?xml version="1.0" encoding="utf-8"?><fluxml xmlns="http://www.13cflux.net/fluxml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.13cflux.net/fluxml http://www.13cflux.net/fluxml">
+      
+  <info>
+	  <date>2020-06-26 16:46:12</date>
+	  <comment>C. glutamicum WT; model for data evaluation of mu=0.4 h-1 data set by IBVT; INCHI enumeration; modeller: martin cerff; contact: info@13cflux.net</comment>
+  </info>
+
+  <reactionnetwork>
+    <metabolitepools>
+     <pool atoms="7" id="PCAin">
+        <annotation name="inchi">InChI=1S/C7H6O4/c8-5-2-1-4(7(10)11)3-6(5)9/h1-3,8-9H,(H,10,11)</annotation>
+      </pool>
+      <pool atoms="6" id="KAP">
+        <annotation name="inchi">InChI=1S/C6H8O5/c7-4(3-6(10)11)1-2-5(8)9/h1-3H2,(H,8,9)(H,10,11)</annotation>
+      </pool>
+      <pool atoms="6" id="GXP">
+        <annotation name="inchi">InChI=1S/C6H13O9P/c7-3-2(1-14-16(11;12)13)15-6(10)5(9)4(3)8/h2-10H;1H2;(H2;11;12;13)/t2-;3-;4+;5-;6+/m1/s1</annotation>
+      </pool>
+      <pool atoms="6" id="G6P_meas">
+        <annotation name="inchi">InChI=1S/C6H13O9P/c7-3-2(1-14-16(11;12)13)15-6(10)5(9)4(3)8/h2-10H;1H2;(H2;11;12;13)/t2-;3-;4+;5-;6+/m1/s1</annotation>
+      </pool>
+      <pool atoms="6" id="F6P_meas">
+        <annotation name="inchi">InChI=1S/C6H13O9P/c7-2-6(10)5(9)4(8)3(15-6)1-14-16(11;12)13/h3-5;7-10H;1-2H2;(H2;11;12;13)/t3-;4-;5+;6?/m1/s1</annotation>
+      </pool>     
+      <pool atoms="3" id="GAP">
+        <annotation name="inchi">InChI=1S/C3H7O6P/c4-1-3(5)2-9-10(6,7)8/h1,3,5H,2H2,(H2,6,7,8)/t3-/m0/s1</annotation>
+      </pool>
+      <pool atoms="3" id="PGA">
+        <annotation name="inchi">InChI=1S/C3H7O7P/c4-2(3(5)6)1-10-11(7,8)9/h2,4H,1H2,(H,5,6)(H2,7,8,9)/t2-/m1/s1</annotation>
+      </pool>
+      <pool atoms="3" id="PEP">
+        <annotation name="inchi">InChI=1S/C3H5O6P/c1-2(3(4)5)9-10(6,7)8/h1H2,(H,4,5)(H2,6,7,8)</annotation>
+      </pool>
+      <pool atoms="3" id="PYR">
+        <annotation name="inchi">InChI=1S/C3H4O3/c1-2(4)3(5)6/h1H3,(H,5,6)</annotation>
+      </pool>
+      <pool atoms="2" id="ACoA">
+        <annotation name="inchi">InChI=1S/C23H38N7O17P3S/c1-12(31)51-7-6-25-14(32)4-5-26-21(35)18(34)23(2,3)9-44-50(41,42)47-49(39,40)43-8-13-17(46-48(36,37)38)16(33)22(45-13)30-11-29-15-19(24)27-10-28-20(15)30/h10-11,13,16-18,22,33-34H,4-9H2,1-3H3,(H,25,32)(H,26,35)(H,39,40)(H,41,42)(H2,24,27,28)(H2,36,37,38)/t13-,16-,17-,18+,22-/m1/s1</annotation>
+        <annotation name="indexes">0,11</annotation>
+      </pool>
+      <pool atoms="4" id="OAA">
+        <annotation name="inchi">InChI=1S/C4H4O5/c5-2(4(8)9)1-3(6)7/h1H2,(H,6,7)(H,8,9)</annotation>
+      </pool>
+      <pool atoms="6" id="CIT">
+        <annotation name="inchi">InChI=1S/C6H8O7/c7-3(8)1-6(13,5(11)12)2-4(9)10/h13H,1-2H2,(H,7,8)(H,9,10)(H,11,12)</annotation>
+      </pool>
+      <pool atoms="6" id="ICIT">
+        <annotation name="inchi">InChI=1S/C6H8O7/c7-3(8)1-2(5(10)11)4(9)6(12)13/h2,4,9H,1H2,(H,7,8)(H,10,11)(H,12,13)</annotation>
+      </pool>
+      <pool atoms="4" id="SUC">
+        <annotation name="inchi">InChI=1S/C4H6O4/c5-3(6)1-2-4(7)8/h1-2H2,(H,5,6)(H,7,8)</annotation>
+      </pool>
+      <pool atoms="4" id="FUM">
+        <annotation name="inchi">InChI=1S/C4H4O4/c5-3(6)1-2-4(7)8/h1-2H,(H,5,6)(H,7,8)/b2-1+</annotation>
+      </pool>
+      <pool atoms="4" id="MAL">
+        <annotation name="inchi">InChI=1S/C4H6O5/c5-2(4(8)9)1-3(6)7/h2,5H,1H2,(H,6,7)(H,8,9)/t2-/m0/s1</annotation>
+      </pool>
+      <pool atoms="5" id="P5P">
+        <annotation name="inchi">InChI=1S/C5H11O8P/c6-1-3(7)5(9)4(8)2-13-14(10,11)12/h4-6,8-9H,1-2H2,(H2,10,11,12)/t4-,5+/m1/s1</annotation>
+      </pool>
+      <pool atoms="7" id="S7P">
+        <annotation name="inchi">InChI=1S/C7H15O10P/c8-1-3(9)5(11)7(13)6(12)4(10)2-17-18(14,15)16/h4-8,10-13H,1-2H2,(H2,14,15,16)/t4-,5-,6-,7+/m1/s1</annotation>
+      </pool>
+      <pool atoms="4" id="E4P">
+        <annotation name="inchi">InChI=1S/C4H9O7P/c5-1-3(6)4(7)2-11-12(8,9)10/h1,3-4,6-7H,2H2,(H2,8,9,10)/t3-,4+/m0/s1</annotation>
+      </pool>
+      <pool atoms="6" id="FBP">
+        <annotation name="inchi">InChI=1S/C6H14O12P2/c7-4-3(1-16-19(10,11)12)18-6(9,5(4)8)2-17-20(13,14)15/h3-5,7-9H,1-2H2,(H2,10,11,12)(H2,13,14,15)/t3-,4-,5+,6?/m1/s1</annotation>
+      </pool>
+      <pool atoms="6" id="GLCin_1_13C">
+        <annotation name="inchi">InChI=1S/C6H12O6/c7-1-2-3(8)4(9)5(10)6(11)12-2/h2-11H,1H2/t2-,3-,4+,5-,6?/m1/s1</annotation>
+      </pool>
+      <pool atoms="6" id="GLCin_U_13C">
+        <annotation name="inchi">InChI=1S/C6H12O6/c7-1-2-3(8)4(9)5(10)6(11)12-2/h2-11H,1H2/t2-,3-,4+,5-,6?/m1/s1</annotation>
+      </pool>
+      <pool atoms="5" id="aKG">
+        <annotation name="inchi">InChI=1S/C5H6O5/c6-3(5(9)10)1-2-4(7)8/h1-2H2,(H,7,8)(H,9,10)</annotation>
+      </pool>
+      <pool atoms="5" id="GLU">
+        <annotation name="inchi">InChI=1S/C5H9NO4/c6-3(5(9)10)1-2-4(7)8/h3H,1-2,6H2,(H,7,8)(H,9,10)/t3-/m0/s1</annotation>
+      </pool>
+      <pool atoms="5" id="GLN">
+        <annotation name="inchi">InChI=1S/C5H10N2O3/c6-3(5(9)10)1-2-4(7)8/h3H,1-2,6H2,(H2,7,8)(H,9,10)/t3-/m0/s1</annotation>
+      </pool>
+      <pool atoms="5" id="PRO">
+        <annotation name="inchi">InChI=1S/C5H9NO2/c7-5(8)4-2-1-3-6-4/h4,6H,1-3H2,(H,7,8)/t4-/m0/s1</annotation>
+      </pool>
+      <pool atoms="4" id="ASP">
+        <annotation name="inchi">InChI=1S/C4H7NO4/c5-2(4(8)9)1-3(6)7/h2H,1,5H2,(H,6,7)(H,8,9)/t2-/m0/s1</annotation>
+      </pool>
+      <pool atoms="4" id="ASN">
+        <annotation name="inchi">InChI=1S/C4H8N2O3/c5-2(4(8)9)1-3(6)7/h2H,1,5H2,(H2,6,7)(H,8,9)/t2-/m0/s1</annotation>
+      </pool>
+      <pool atoms="4" id="HSER">
+        <annotation name="inchi">InChI=1S/C4H9NO3/c5-3(1-2-6)4(7)8/h3,6H,1-2,5H2,(H,7,8)/t3-/m0/s1</annotation>
+      </pool>
+      <pool atoms="4" id="THR">
+        <annotation name="inchi">InChI=1S/C4H9NO3/c1-2(6)3(5)4(7)8/h2-3,6H,5H2,1H3,(H,7,8)/t2-,3+/m1/s1</annotation>
+      </pool>
+      <pool atoms="6" id="ILE">
+        <annotation name="inchi">InChI=1S/C6H13NO2/c1-3-4(2)5(7)6(8)9/h4-5H,3,7H2,1-2H3,(H,8,9)/t4-,5-/m0/s1</annotation>
+      </pool>
+      <pool atoms="5" id="MET">
+        <annotation name="inchi">InChI=1S/C5H11NO2S/c1-9-3-2-4(6)5(7)8/h4H,2-3,6H2,1H3,(H,7,8)/t4-/m0/s1</annotation>
+      </pool>
+      <pool atoms="3" id="DHAP">
+        <annotation name="inchi">InChI=1S/C3H7O6P/c4-1-3(5)2-9-10(6,7)8/h4H,1-2H2,(H2,6,7,8)</annotation>
+      </pool>
+      <pool atoms="3" id="SER">
+        <annotation name="inchi">InChI=1S/C3H7NO3/c4-2(1-5)3(6)7/h2,5H,1,4H2,(H,6,7)/t2-/m0/s1</annotation>
+      </pool>
+      <pool atoms="10" id="CHO">
+        <annotation name="inchi">InChI=1S/C10H10O6/c1-5(9(12)13)16-8-4-6(10(14)15)2-3-7(8)11/h2-4,7-8,11H,1H2,(H,12,13)(H,14,15)/t7-,8-/m1/s1</annotation>
+      </pool>
+      <pool atoms="9" id="TYR">
+        <annotation name="inchi">InChI=1S/C9H11NO3/c10-8(9(12)13)5-6-1-3-7(11)4-2-6/h1-4,8,11H,5,10H2,(H,12,13)/t8-/m0/s1</annotation>
+      </pool>
+      <pool atoms="9" id="PHE">
+        <annotation name="inchi">InChI=1S/C9H11NO2/c10-8(9(11)12)6-7-4-2-1-3-5-7/h1-5,8H,6,10H2,(H,11,12)/t8-/m0/s1</annotation>
+      </pool>
+      <pool atoms="6" id="LEU">
+        <annotation name="inchi">InChI=1S/C6H13NO2/c1-4(2)3-5(7)6(8)9/h4-5H,3,7H2,1-2H3,(H,8,9)/t5-/m0/s1</annotation>
+      </pool>
+      <pool atoms="3" id="ALA">
+        <annotation name="inchi">InChI=1S/C3H7NO2/c1-2(4)3(5)6/h2H,4H2,1H3,(H,5,6)/t2-/m0/s1</annotation>
+      </pool>
+      <pool atoms="5" id="MOB">
+        <annotation name="inchi">InChI=1S/C5H8O3/c1-3(2)4(6)5(7)8/h3H,1-2H3,(H,7,8)</annotation>
+      </pool>
+      <pool atoms="5" id="VAL">
+        <annotation name="inchi">InChI=1S/C5H11NO2/c1-3(2)4(6)5(7)8/h3-4H,6H2,1-2H3,(H,7,8)/t4-/m0/s1</annotation>
+      </pool>
+      <pool atoms="1" id="CO2">
+        <annotation name="inchi">InChI=1S/CO2/c2-1-3</annotation>
+      </pool>
+      <pool atoms="2" id="GLY">
+        <annotation name="inchi">InChI=1S/C2H5NO2/c3-1-2(4)5/h1,3H2,(H,4,5)</annotation>
+      </pool>
+      <pool id="BIO"/>
+      <pool id="BM"/>
+      <pool atoms="1" id="THF"/>
+      <pool atoms="6" id="LYS">
+        <annotation name="inchi">InChI=1S/C6H14N2O2/c7-4-2-1-3-5(8)6(9)10/h5H,1-4,7-8H2,(H,9,10)/t5-/m0/s1</annotation>
+      </pool>
+      <pool atoms="6" id="ARG">
+        <annotation name="inchi">InChI=1S/C6H14N4O2/c7-4(5(11)12)2-1-3-10-6(8)9/h4H,1-3,7H2,(H,11,12)(H4,8,9,10)/t4-/m0/s1</annotation>
+      </pool>
+      <pool atoms="6" id="ORN_CIL">
+        <annotation name="inchi">InChI=1S/C6H14N4O2/c7-4(5(11)12)2-1-3-10-6(8)9/h4H,1-3,7H2,(H,11,12)(H4,8,9,10)/t4-/m0/s1</annotation>
+      </pool>
+    </metabolitepools>
+    <reaction bidirectional="false" id="glc_upt_1_13C">
+      <annotation name="pathway">UPT</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1 C#6@1" id="GLCin_1_13C"/>
+      <rproduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1 C#6@1" id="G6P_meas"/>
+    </reaction>
+     <reaction bidirectional="false" id="glc_upt_U_13C">
+      <annotation name="pathway">UPT</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1 C#6@1" id="GLCin_U_13C"/>
+      <rproduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1 C#6@1" id="G6P_meas"/>
+    </reaction>
+    <reaction bidirectional="false" id="pts">
+      <annotation name="pathway">EMP</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1" id="PEP"/>
+      <rproduct cfg="C#1@1 C#2@1 C#3@1" id="PYR"/>
+    </reaction>
+    <reaction id="pgi">
+      <annotation name="pathway">EMP</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1 C#6@1" id="G6P_meas"/>
+      <rproduct cfg="C#1@1 C#6@1 C#2@1 C#3@1 C#4@1 C#5@1" id="F6P_meas"/>
+    </reaction>
+    <reaction id="pfk">
+      <annotation name="pathway">EMP</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1 C#6@1" id="F6P_meas"/>
+      <rproduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1 C#6@1" id="FBP"/>
+    </reaction>
+    <reaction id="fda">
+      <annotation name="pathway">EMP</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1 C#6@1" id="FBP"/>
+      <rproduct cfg="C#4@1 C#1@1 C#3@1" id="GAP"/>
+      <rproduct cfg="C#5@1 C#2@1 C#6@1" id="DHAP"/>
+    </reaction>
+    <reaction id="tpi">
+      <annotation name="pathway">EMP</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1" id="DHAP"/>
+      <rproduct cfg="C#1@1 C#2@1 C#3@1" id="GAP"/>
+    </reaction>
+    <reaction id="gapA">
+      <annotation name="pathway">EMP</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1" id="GAP"/>
+      <rproduct cfg="C#2@1 C#3@1 C#1@1" id="PGA"/>
+    </reaction>
+    <reaction id="eno">
+      <annotation name="pathway">EMP</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1" id="PGA"/>
+      <rproduct cfg="C#1@1 C#2@1 C#3@1" id="PEP"/>
+    </reaction>
+    <reaction bidirectional="false" id="pyk">
+      <annotation name="pathway">EMP</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1" id="PEP"/>
+      <rproduct cfg="C#1@1 C#2@1 C#3@1" id="PYR"/>
+    </reaction>
+    <reaction bidirectional="false" id="pdh">
+      <annotation name="pathway">EMP</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1" id="PYR"/>
+      <rproduct cfg="C#1@1 C#2@1" id="ACoA"/>
+      <rproduct cfg="C#3@1" id="CO2"/>
+    </reaction>
+    <reaction bidirectional="false" id="gltA">
+      <annotation name="pathway">TCA</annotation>
+      <reduct cfg="C#1@1 C#2@1" id="ACoA"/>
+      <reduct cfg="C#1@2 C#2@2 C#3@2 C#4@2" id="OAA"/>
+      <rproduct cfg="C#1@1 C#1@2 C#2@1 C#3@2 C#4@2 C#2@2" id="CIT"/>
+    </reaction>
+    <reaction id="acn">
+      <annotation name="pathway">TCA</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1 C#6@1" id="CIT"/>
+      <rproduct cfg="C#1@1 C#6@1 C#3@1 C#2@1 C#5@1 C#4@1" id="ICIT"/>
+    </reaction>
+    <reaction bidirectional="false" id="odh___1">
+      <annotation name="pathway">TCA</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1" id="aKG"/>
+      <rproduct cfg="C#1@1 C#2@1 C#3@1 C#4@1" id="SUC"/>
+      <rproduct cfg="C#5@1" id="CO2"/>
+    </reaction>
+    <reaction bidirectional="false" id="odh___2">
+      <annotation name="pathway">TCA</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1" id="aKG"/>
+      <rproduct cfg="C#2@1 C#1@1 C#4@1 C#3@1" id="SUC"/>
+      <rproduct cfg="C#5@1" id="CO2"/>
+    </reaction>
+    <reaction id="sdh___1">
+      <annotation name="pathway">TCA</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1" id="SUC"/>
+      <rproduct cfg="C#1@1 C#2@1 C#3@1 C#4@1" id="FUM"/>
+    </reaction>
+    <reaction id="sdh___2">
+      <annotation name="pathway">TCA</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1" id="SUC"/>
+      <rproduct cfg="C#2@1 C#1@1 C#4@1 C#3@1" id="FUM"/>
+    </reaction>
+    <reaction id="fumC___1">
+      <annotation name="pathway">TCA</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1" id="FUM"/>
+      <rproduct cfg="C#2@1 C#1@1 C#4@1 C#3@1" id="MAL"/>
+    </reaction>
+    <reaction id="fumC___2">
+      <annotation name="pathway">TCA</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1" id="FUM"/>
+      <rproduct cfg="C#1@1 C#2@1 C#3@1 C#4@1" id="MAL"/>
+    </reaction>
+    <reaction id="mqo_mdh___1">
+      <annotation name="pathway">TCA</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1" id="MAL"/>
+      <rproduct cfg="C#1@1 C#2@1 C#3@1 C#4@1" id="OAA"/>
+    </reaction>
+    <reaction bidirectional="false" id="serC___1">
+      <annotation name="pathway">AAS</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1" id="PGA"/>
+      <rproduct cfg="C#1@1 C#2@1 C#3@1" id="SER"/>
+    </reaction>
+    <reaction bidirectional="false" id="ilvB___1">
+      <annotation name="pathway">AAS</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1" id="PYR"/>
+      <reduct cfg="C#1@2 C#2@2 C#3@2" id="PYR"/>
+      <rproduct cfg="C#1@2 C#1@1 C#2@2 C#2@1 C#3@1" id="MOB"/>
+      <rproduct cfg="C#3@2" id="CO2"/>
+    </reaction>
+    <reaction bidirectional="false" id="ilvEv___1">
+      <annotation name="pathway">AAS</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1" id="MOB"/>
+      <rproduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1" id="VAL"/>
+    </reaction>
+    <reaction bidirectional="false" id="ilvEa___1">
+      <annotation name="pathway">AAS</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1" id="VAL"/>
+      <reduct cfg="C#1@2 C#2@2 C#3@2" id="PYR"/>
+      <rproduct cfg="C#1@2 C#2@2 C#3@2" id="ALA"/>
+      <rproduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1" id="MOB"/>
+    </reaction>
+    <reaction bidirectional="false" id="leuAP___1">
+      <annotation name="pathway">AAS</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1" id="MOB"/>
+      <reduct cfg="C#1@2 C#2@2" id="ACoA"/>
+      <rproduct cfg="C#2@1 C#1@1 C#4@1 C#3@1 C#1@2 C#2@2" id="LEU"/>
+      <rproduct cfg="C#5@1" id="CO2"/>
+    </reaction>
+    <reaction bidirectional="false" id="aro___1">
+      <annotation name="pathway">AAS</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1" id="PEP"/>
+      <reduct cfg="C#1@2 C#2@2 C#3@2" id="PEP"/>
+      <reduct cfg="C#1@3 C#2@3 C#3@3 C#4@3" id="E4P"/>
+      <rproduct cfg="C#1@2 C#2@3 C#4@3 C#1@1 C#2@2 C#2@1 C#3@3 C#1@3 C#3@2 C#3@1" id="CHO"/>
+    </reaction>
+    <reaction bidirectional="false" id="tyrAB___1">
+      <annotation name="pathway">AAS</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1 C#6@1 C#7@1 C#8@1 C#9@1 C#10@1" id="CHO"/>
+      <rproduct cfg="C#4@1 C#2@1 C#8@1 C#3@1 C#1@1 C#6@1 C#7@1 C#5@1 C#9@1" id="TYR"/>
+      <rproduct cfg="C#10@1" id="CO2"/>
+    </reaction>
+    <reaction bidirectional="false" id="phoAB___1">
+      <annotation name="pathway">AAS</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1 C#6@1 C#7@1 C#8@1 C#9@1 C#10@1" id="CHO"/>
+      <rproduct cfg="C#7@1 C#8@1 C#3@1 C#4@1 C#2@1 C#1@1 C#6@1 C#5@1 C#9@1" id="PHE"/>
+      <rproduct cfg="C#10@1" id="CO2"/>
+    </reaction>
+    <reaction bidirectional="false" id="gnd___1">
+      <annotation name="pathway">PPP</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1 C#6@1" id="G6P_meas"/>
+      <rproduct cfg="C#5@1 C#1@1 C#4@1 C#2@1 C#3@1" id="P5P"/>
+      <rproduct cfg="C#6@1" id="CO2"/>
+    </reaction>
+    <reaction id="tkt1___1">
+      <annotation name="pathway">PPP</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1" id="P5P"/>
+      <reduct cfg="C#1@2 C#2@2 C#3@2 C#4@2 C#5@2" id="P5P"/>
+      <rproduct cfg="C#1@1 C#2@2 C#3@1 C#4@2 C#1@2 C#5@2 C#3@2" id="S7P"/>
+      <rproduct cfg="C#5@1 C#2@1 C#4@1" id="GAP"/>
+    </reaction>
+    <reaction id="tal___1">
+      <annotation name="pathway">PPP</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1 C#6@1 C#7@1" id="S7P"/>
+      <reduct cfg="C#1@2 C#2@2 C#3@2" id="GAP"/>
+      <rproduct cfg="C#2@2 C#1@1 C#3@2 C#1@2 C#5@1 C#3@1" id="F6P_meas"/>
+      <rproduct cfg="C#7@1 C#2@1 C#6@1 C#4@1" id="E4P"/>
+    </reaction>
+    <reaction id="tkt2___1">
+      <annotation name="pathway">PPP</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1" id="E4P"/>
+      <reduct cfg="C#1@2 C#2@2 C#3@2 C#4@2 C#5@2" id="P5P"/>
+      <rproduct cfg="C#2@1 C#1@2 C#4@1 C#3@1 C#1@1 C#3@2" id="F6P_meas"/>
+      <rproduct cfg="C#5@2 C#2@2 C#4@2" id="GAP"/>
+    </reaction>
+    <reaction id="pyc_odx___1">
+      <annotation name="pathway">ANA</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1" id="PYR"/>
+      <reduct cfg="C#1@2" id="CO2"/>
+      <rproduct cfg="C#1@1 C#2@1 C#1@2 C#3@1" id="OAA"/>
+    </reaction>
+    <reaction id="pck_ppc___1">
+      <annotation name="pathway">ANA</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1" id="PEP"/>
+      <reduct cfg="C#1@2" id="CO2"/>
+      <rproduct cfg="C#1@1 C#2@1 C#1@2 C#3@1" id="OAA"/>
+    </reaction>
+    <reaction id="mez___1">
+      <annotation name="pathway">ANA</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1" id="MAL"/>
+      <rproduct cfg="C#1@1 C#2@1 C#4@1" id="PYR"/>
+      <rproduct cfg="C#3@1" id="CO2"/>
+    </reaction>
+    <reaction id="aspB___1">
+      <annotation name="pathway">AAS</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1" id="OAA"/>
+      <rproduct cfg="C#1@1 C#2@1 C#3@1 C#4@1" id="ASP"/>
+    </reaction>
+    <reaction bidirectional="false" id="ltsA___1">
+      <annotation name="pathway">AAS</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1" id="ASP"/>
+      <rproduct cfg="C#1@1 C#2@1 C#3@1 C#4@1" id="ASN"/>
+    </reaction>
+    <reaction bidirectional="false" id="lysC_hom___1">
+      <annotation name="pathway">AAS</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1" id="ASP"/>
+      <rproduct cfg="C#1@1 C#3@1 C#2@1 C#4@1" id="HSER"/>
+    </reaction>
+    <reaction bidirectional="false" id="thrB___1">
+      <annotation name="pathway">AAS</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1" id="HSER"/>
+      <rproduct cfg="C#2@1 C#1@1 C#3@1 C#4@1" id="THR"/>
+    </reaction>
+    <reaction bidirectional="false" id="metXH___1">
+      <annotation name="pathway">AAS</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1" id="HSER"/>
+      <reduct cfg="C#1@2" id="THF"/>
+      <reduct cfg="C#1@3 C#2@3 C#3@3" id="SER"/>
+      <rproduct cfg="C#1@2 C#1@1 C#2@1 C#3@1 C#4@1" id="MET"/>
+      <rproduct cfg="C#1@3 C#2@3 C#3@3" id="PYR"/>
+    </reaction>
+    <reaction bidirectional="false" id="ilvAE___1">
+      <annotation name="pathway">AAS</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1" id="THR"/>
+      <reduct cfg="C#1@2 C#2@2 C#3@2" id="PYR"/>
+      <rproduct cfg="C#1@1 C#1@2 C#2@1 C#2@2 C#3@1 C#4@1" id="ILE"/>
+      <rproduct cfg="C#3@2" id="CO2"/>
+    </reaction>
+    <reaction id="gdh___1">
+      <annotation name="pathway">AAS</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1" id="aKG"/>
+      <rproduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1" id="GLU"/>
+    </reaction>
+    <reaction bidirectional="false" id="proG___1">
+      <annotation name="pathway">AAS</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1" id="GLU"/>
+      <rproduct cfg="C#2@1 C#1@1 C#4@1 C#3@1 C#5@1" id="PRO"/>
+    </reaction>
+    <reaction bidirectional="false" id="glnA___1">
+      <annotation name="pathway">AAS</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1" id="GLU"/>
+      <rproduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1" id="GLN"/>
+    </reaction>
+    <reaction id="g6p_bm___1">
+      <annotation name="pathway">BTM</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1 C#6@1" id="G6P_meas"/>
+    </reaction>
+    <reaction id="f6p_bm___1">
+      <annotation name="pathway">BTM</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1 C#6@1" id="F6P_meas"/>
+    </reaction>
+    <reaction id="p5p_bm___1">
+      <annotation name="pathway">BTM</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1" id="P5P"/>
+    </reaction>
+    <reaction id="gap_bm___1">
+      <annotation name="pathway">BTM</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1" id="GAP"/>
+    </reaction>
+    <reaction id="e4p_bm___1">
+      <annotation name="pathway">BTM</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1" id="E4P"/>
+    </reaction>
+    <reaction id="pga_bm___1">
+      <annotation name="pathway">BTM</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1" id="PGA"/>
+    </reaction>
+    <reaction id="pep_bm___1">
+      <annotation name="pathway">BTM</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1" id="PEP"/>
+    </reaction>
+    <reaction id="pyr_bm___1">
+      <annotation name="pathway">BTM</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1" id="PYR"/>
+    </reaction>
+    <reaction id="acoa_bm___1">
+      <annotation name="pathway">BTM</annotation>
+      <reduct cfg="C#1@1 C#2@1" id="ACoA"/>
+    </reaction>
+    <reaction id="akg_bm___1">
+      <annotation name="pathway">BTM</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1" id="aKG"/>
+    </reaction>
+    <reaction id="oaa_bm___1">
+      <annotation name="pathway">BTM</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1" id="OAA"/>
+    </reaction>
+    <reaction id="tyr_bm___1">
+      <annotation name="pathway">BTM</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1 C#6@1 C#7@1 C#8@1 C#9@1" id="TYR"/>
+    </reaction>
+    <reaction id="phe_bm___1">
+      <annotation name="pathway">BTM</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1 C#6@1 C#7@1 C#8@1 C#9@1" id="PHE"/>
+    </reaction>
+    <reaction id="ala_bm___1">
+      <annotation name="pathway">BTM</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1" id="ALA"/>
+    </reaction>
+    <reaction id="val_bm___1">
+      <annotation name="pathway">BTM</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1" id="VAL"/>
+    </reaction>
+    <reaction id="mu_mes___1">
+      <annotation name="pathway">BTM</annotation>
+      <reduct cfg="" id="BIO"/>
+      <rproduct id="BM"/>
+    </reaction>
+    <reaction id="bm_frac___1">
+      <annotation name="pathway">BTM</annotation>
+      <reduct cfg="" id="BM"/>
+    </reaction>
+    <reaction id="leu_bm___1">
+      <annotation name="pathway">BTM</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1 C#6@1" id="LEU"/>
+    </reaction>
+    <reaction id="pro_bm___1">
+      <annotation name="pathway">BTM</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1" id="PRO"/>
+    </reaction>
+    <reaction id="gln_bm___1">
+      <annotation name="pathway">BTM</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1" id="GLN"/>
+    </reaction>
+    <reaction id="glu_bm___1">
+      <annotation name="pathway">BTM</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1" id="GLU"/>
+    </reaction>
+    <reaction id="asx_bm___1">
+      <annotation name="pathway">BTM</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1" id="ASN"/>
+    </reaction>
+    <reaction id="thr_bm___1">
+      <annotation name="pathway">BTM</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1" id="THR"/>
+    </reaction>
+    <reaction id="ile_bm___1">
+      <annotation name="pathway">BTM</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1 C#6@1" id="ILE"/>
+    </reaction>
+    <reaction id="met_bm___1">
+      <annotation name="pathway">BTM</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1" id="MET"/>
+    </reaction>
+    <reaction id="ser_bm___1">
+      <annotation name="pathway">BTM</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1" id="SER"/>
+    </reaction>
+    <reaction id="gly_bm___1">
+      <annotation name="pathway">BTM</annotation>
+      <reduct cfg="C#1@1 C#2@1" id="GLY"/>
+    </reaction>
+    <reaction id="cys_bm___1">
+      <annotation name="pathway">BTM</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1" id="SER"/>
+    </reaction>
+    <reaction bidirectional="false" id="glyA___1">
+      <annotation name="pathway">AAS</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1" id="SER"/>
+      <rproduct cfg="C#2@1 C#3@1" id="GLY"/>
+      <rproduct cfg="C#1@1" id="THF"/>
+    </reaction>
+    <reaction id="thf_out___1">
+      <annotation name="pathway">BTM</annotation>
+      <reduct cfg="C#1@1" id="THF"/>
+    </reaction>
+    <reaction id="co2_out___1">
+      <annotation name="pathway">BTM</annotation>
+      <reduct cfg="C#1@1" id="CO2"/>
+    </reaction>
+   <reaction bidirectional="false" id="lysCA___1">
+      <annotation name="pathway">AAS</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1" id="ASP"/>
+      <reduct cfg="C#1@2 C#2@2 C#3@2" id="PYR"/>
+      <rproduct cfg="C#3@1 C#1@2 C#1@1 C#2@2 C#2@1 C#4@1" id="LYS"/>
+      <rproduct cfg="C#3@2" id="CO2"/>
+    </reaction>
+    <reaction bidirectional="false" id="lysCA___2">
+      <annotation name="pathway">AAS</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1" id="ASP"/>
+      <reduct cfg="C#1@2 C#2@2 C#3@2" id="PYR"/>
+      <rproduct cfg="C#3@1 C#1@1 C#1@2 C#2@1 C#2@2 C#3@2" id="LYS"/>
+      <rproduct cfg="C#4@1" id="CO2"/>
+    </reaction>
+    <reaction id="lys_bm___1">
+      <annotation name="pathway">BTM</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1 C#6@1" id="LYS"/>
+    </reaction>
+     <reaction id="pgm_ots">
+      <annotation name="pathway">STORE</annotation>
+      <annotation name="name">pgm</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1 C#6@1" id="G6P_meas"/>
+      <rproduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1 C#6@1" id="GXP"/>      
+    </reaction>   
+     <reaction id="GXP_bm___1">
+      <annotation name="pathway">BTM</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1 C#6@1" id="GXP"/>
+    </reaction>
+    <reaction id="icd">
+      <annotation name="pathway">TCA</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1 C#6@1" id="ICIT"/>
+      <rproduct cfg="C#6@1 C#1@1 C#2@1 C#3@1 C#4@1" id="aKG"/>
+      <rproduct cfg="C#5@1" id="CO2"/>
+    </reaction>
+    <reaction id="arg_bm___1">
+      <annotation name="pathway">BTM</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1 C#6@1" id="ARG"/>
+    </reaction>
+    <reaction bidirectional="false" id="argB">
+      <annotation name="pathway">AAS</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1" id="GLU"/>
+      <reduct cfg="C#1@2" id="CO2"/>
+      <rproduct cfg="C#2@1 C#1@1 C#4@1 C#3@1 C#5@1 C#1@2" id="ORN_CIL"/>
+    </reaction>
+    <reaction bidirectional="false" id="argGH">
+      <annotation name="pathway">AAS</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1 C#6@1" id="ORN_CIL"/>     
+      <rproduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1 C#6@1" id="ARG"/>
+    </reaction>
+    <reaction bidirectional="false" id="pca_upt">
+      <annotation name="pathway">PCA</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1 C#6@1 C#7@1" id="PCAin"/>
+      <rproduct cfg="C#7@1" id="CO2"/>
+      <rproduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1 C#6@1" id="KAP"/>
+    </reaction>
+    <reaction bidirectional="false" id="pca_met___1">
+      <annotation name="pathway">PCA</annotation>
+      <annotation name="name">pca_met</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1 C#6@1" id="KAP"/>
+      <rproduct cfg="C#2@1 C#1@1 C#5@1 C#4@1" id="SUC"/>
+      <rproduct cfg="C#3@1 C#6@1" id="ACoA"/>
+    </reaction>
+    <reaction bidirectional="false" id="pca_met___2">
+      <annotation name="pathway">PCA</annotation>
+      <annotation name="name">pca_met</annotation>
+      <reduct cfg="C#1@1 C#2@1 C#3@1 C#4@1 C#5@1 C#6@1" id="KAP"/>
+      <rproduct cfg="C#1@1 C#2@1 C#4@1 C#5@1" id="SUC"/>
+      <rproduct cfg="C#3@1 C#6@1" id="ACoA"/>
+    </reaction>
+  </reactionnetwork>
+  
+  <configuration name="default">
+    <input pool="BIO" type="isotopomer"/>
+     <input pool="GLCin_1_13C" type="isotopomer">
+      <label cfg="000001" purity="0.99">1</label>      
+    </input>
+     <input pool="GLCin_U_13C" type="isotopomer">      
+      <label cfg="111111" purity="0.99">1</label>
+    </input>
+    <input pool="PCAin" type="isotopomer">      
+      <label cfg="0000000" purity="0.99">1</label>
+    </input>
+
+    <constraints>
+      <net>
+        <textual>g6p_bm___1=205*bm_frac___1;
+f6p_bm___1=71*bm_frac___1;
+p5p_bm___1=879*bm_frac___1;
+e4p_bm___1=54*bm_frac___1;
+gap_bm___1=129*bm_frac___1;
+pga_bm___1=620*bm_frac___1;
+pep_bm___1=106*bm_frac___1;
+pyr_bm___1=229*bm_frac___1;
+acoa_bm___1=2500*bm_frac___1;
+oaa_bm___1=486*bm_frac___1;
+akg_bm___1=276*bm_frac___1;
+ala_bm___1=606*bm_frac___1;
+asx_bm___1=399*bm_frac___1;
+cys_bm___1=87*bm_frac___1;
+glu_bm___1=610*bm_frac___1;
+gln_bm___1=196*bm_frac___1;
+gly_bm___1=361*bm_frac___1;
+ile_bm___1=202*bm_frac___1;
+leu_bm___1=440*bm_frac___1;
+lys_bm___1=202*bm_frac___1;
+met_bm___1=146*bm_frac___1;
+phe_bm___1=133*bm_frac___1;
+pro_bm___1=170*bm_frac___1;
+ser_bm___1=225*bm_frac___1;
+thr_bm___1=275*bm_frac___1;
+tyr_bm___1=81*bm_frac___1;
+val_bm___1=284*bm_frac___1;
+arg_bm___1=189*bm_frac___1;
+
+pts=glc_upt_1_13C+glc_upt_U_13C;
+pyc_odx___1=1325.4852328072136;
+pyk=1858.696501514595;
+GXP_bm___1=1;
+
+sdh___1/0.5=sdh___2/0.5;
+fumC___1/0.5=fumC___2/0.5;
+odh___1/0.5=odh___2/0.5;
+lysCA___1/0.5=lysCA___2/0.5;
+pca_met___1/0.5=pca_met___2/0.5;
+
+glc_upt_1_13C + glc_upt_U_13C	&gt;=	3000	;	
+glc_upt_1_13C + glc_upt_U_13C	&lt;=	4730	;
+gnd___1	&gt;=	400	;	
+gnd___1	&lt;=	2400	; 
+mu_mes___1	&gt;=	0.32	;	
+mu_mes___1	&lt;=	0.48	;
+pyc_odx___1 &gt;= -6000.697335;			
+pyc_odx___1 &lt;= 6134.082999;
+pyk	&gt;=	0;	
+pyk	&lt;=	6540.063035;
+pca_upt &gt;=0;
+pca_upt &lt;=100;      
+        
+</textual>
+    </net>
+ 
+      <xch>
+        <textual>
+sdh___1/0.5=sdh___2/0.5;
+fumC___1/0.5=fumC___2/0.5;
+
+gdh___1=2080532.491493816;
+aspB___1=5689.783169029955;
+pgm_ots=409.6695705580755;
+pyc_odx___1=5.000000000000664e-07;
+mez___1=5.000000005139782e-07;
+mqo_mdh___1=25660.126591546446;
+fumC___1=68227.68884821088;
+gapA=81465.63438303898;
+eno=212285.53266755593;
+acn=11974.23404453989;
+pgi=95165.1391043064;
+sdh___1=42792.754484722;
+tal___1=4.999999987376214e-07;
+icd=732.0152840050424;
+
+pgm_ots &gt;=0;
+pgm_ots &lt;=5000000;
+aspB___1 &gt;= 0;
+aspB___1 &lt;= 500000;
+eno &gt;= 0;
+eno &lt;= 5000000;
+fda &gt;= 0;
+fda &lt;= 500000;
+fumC___1 &gt;= 0;
+fumC___1 &lt;= 500000;
+gapA &gt;= 0;
+gapA &lt;= 5000000;
+mez___1 &gt;= 0;
+mez___1 &lt;= 500000;
+mqo_mdh___1 &gt;=0;
+mqo_mdh___1 &lt;=500000;
+pck_ppc___1 &gt;= 0;
+pck_ppc___1 &lt;= 500000;
+pgi &gt;= 0;
+pgi &lt;= 5000000;
+pyc_odx___1 &gt;= 0;
+pyc_odx___1 &lt;= 500000;
+sdh___1 &gt;= 0;
+sdh___1 &lt;= 500000;
+tal___1 &gt;= 0;
+tal___1 &lt;= 50000;
+tkt1___1 &gt;= 0;
+tkt1___1 &lt;= 500000;
+tkt2___1 &gt;= 0;
+tkt2___1 &lt;= 500000;
+tpi &gt;= 0;
+tpi &lt;= 500000;
+gdh___1 &gt;= 0;
+gdh___1 &lt;= 5000000;
+pfk &gt;=0;
+pfk &lt;=5000000;
+icd &gt;=0;
+icd &lt;=5000000;
+acn &gt;=0;
+acn &lt;=5000000;
+</textual>
+    </xch>
+    </constraints>
+
+    <measurement>
+      <mlabel>
+        <date>2019-12-04 00:00:00</date>
+	<fluxunit>mumol/g/h</fluxunit>
+        </mlabel>
+      <model>
+        <labelingmeasurement>
+        
+          <group id="label_group_0" scale="auto">
+            <textual>G6P_meas#M0,1,2,3,4,5,6</textual>
+          </group>
+          <group id="label_group_1" scale="auto">
+            <textual>F6P_meas#M0,1,2,3,4,5,6</textual>
+          </group>
+          <group id="label_group_2" scale="auto">
+            <textual>FBP#M0,1,2,3,4,5,6</textual>
+          </group>
+          <group id="label_group_3" scale="auto">
+            <textual>DHAP#M0,1,3</textual>
+          </group>
+          <group id="label_group_4" scale="auto">
+            <textual>GAP#M0,1,3</textual>
+          </group>
+          <group id="label_group_5" scale="auto">
+            <textual>PGA#M0,1,2,3</textual>
+          </group>
+          <group id="label_group_6" scale="auto">
+            <textual>PEP#M0,1,2,3</textual>
+          </group>
+          <group id="label_group_7" scale="auto">
+            <textual>PYR#M0,1,2,3</textual>
+          </group>
+          <group id="label_group_9" scale="auto">
+            <textual>CIT#M0,1,2,3,4,5,6</textual>
+          </group>
+          <group id="label_group_11" scale="auto">
+            <textual>ICIT#M0,1,2,3,4,5,6</textual>
+          </group>
+          <group id="label_group_12" scale="auto">
+            <textual>aKG#M0,1,2,3,4,5</textual>
+          </group>
+          <group id="label_group_13" scale="auto">
+            <textual>SUC#M0,1,2,3,4</textual>
+          </group>
+          <group id="label_group_14" scale="auto">
+            <textual>FUM#M0,1,2,3,4</textual>
+          </group>
+          <group id="label_group_15" scale="auto">
+            <textual>MAL#M0,1,2,3,4</textual>
+          </group>
+          <group id="label_group_16" scale="auto">
+            <textual>P5P#M0,1,2,3,4,5</textual>
+          </group>
+          <group id="label_group_17" scale="auto">
+            <textual>S7P#M0,1,2,3,4,5,6,7</textual>
+          </group>
+          <group id="label_group_18" scale="auto">
+            <textual>PHE#M0,1,2,3,4,5,6,7,8,9</textual>
+          </group>
+          <group id="label_group_19" scale="auto">
+            <textual>TYR#M0,1,2,3,4,5,6,7,8,9</textual>
+          </group>
+          <group id="label_group_20" scale="auto">
+            <textual>ALA#M0,1,2,3</textual>
+          </group>
+          <group id="label_group_21" scale="auto">
+            <textual>VAL#M0,1,2,3,4,5</textual>
+          </group>
+          <group id="label_group_22" scale="auto">
+            <textual>LEU#M0,1,2,3,4,5,6</textual>
+	    </group>
+  	  <group id="label_group_23" scale="auto">
+            <textual>SER#M0,1,2,3</textual>
+          </group>
+          <group id="label_group_25" scale="auto">
+            <textual>GLU#M0,1,2,3,4,5</textual>
+          </group>
+          <group id="label_group_26" scale="auto">
+            <textual>GLN#M0,1,2,3,4,5</textual>
+          </group>
+          <group id="label_group_27" scale="auto">
+            <textual>ARG#M0,1,2,3,4,5,6</textual>
+          </group>
+          <group id="label_group_28" scale="auto">
+            <textual>ASP#M0,1,2,3,4</textual>
+          </group>
+          <group id="label_group_29" scale="auto">
+            <textual>LYS#M0,1,2,3,4,5,6</textual>
+          </group>
+          <group id="label_group_30" scale="auto">
+            <textual>THR#M0,1,2,3,4</textual>
+          </group>
+          <group id="label_group_31" scale="auto">
+            <textual>ILE#M0,1,2,3,4,5,6</textual>
+          </group>
+          <group id="label_group_32" scale="auto">
+            <textual>MET#M0,1,2,3,4,5</textual>
+          </group>
+          <group id="label_group_33" scale="auto">
+            <textual>PRO#M0,1,2,3,4,5</textual>
+          </group>
+          
+       </labelingmeasurement>
+
+       <fluxmeasurement>
+           <netflux id="fp_2">
+            <textual>glc_upt_1_13C+glc_upt_U_13C</textual>
+          </netflux>
+          <netflux id="fp_3">
+            <textual>mu_mes___1</textual>
+          </netflux>
+          <netflux id="fp_4">
+            <textual>co2_out___1</textual>
+          </netflux>
+          <netflux id="fp_5">
+            <textual>glc_upt_1_13C</textual>
+          </netflux>
+	  <netflux id="fp_6">
+            <textual>glc_upt_U_13C</textual>
+         </netflux>
+           <netflux id="fp_7">
+            <textual>pca_upt</textual>
+         </netflux>
+         
+       </fluxmeasurement>
+       
+      </model>
+
+      <data>
+        <datum id="label_group_0" stddev="0.025" weight="0">0.011954630903146456</datum>
+        <datum id="label_group_0" stddev="0.025" weight="1">0.2282082330011046</datum>
+        <datum id="label_group_0" stddev="0.025" weight="2">0.04550176342226371</datum>
+        <datum id="label_group_0" stddev="0.025" weight="3">0.04775511013611513</datum>
+        <datum id="label_group_0" stddev="0.025" weight="4">0.06691603022500735</datum>
+        <datum id="label_group_0" stddev="0.025" weight="5">0.07640878087632497</datum>
+        <datum id="label_group_0" stddev="0.025" weight="6">0.5232554514360378</datum>
+        <datum id="label_group_1" stddev="0.025" weight="0">0.009459418995015663</datum>
+        <datum id="label_group_1" stddev="0.025" weight="1">0.24297666074114116</datum>
+        <datum id="label_group_1" stddev="0.025" weight="2">0.04032718191326574</datum>
+        <datum id="label_group_1" stddev="0.025" weight="3">0.04244910278574656</datum>
+        <datum id="label_group_1" stddev="0.025" weight="4">0.06551348135943429</datum>
+        <datum id="label_group_1" stddev="0.025" weight="5">0.06694041657698183</datum>
+        <datum id="label_group_1" stddev="0.025" weight="6">0.5323337376284148</datum>
+        <datum id="label_group_2" stddev="0.025" weight="0">0.02088787400927662</datum>
+        <datum id="label_group_2" stddev="0.025" weight="1">0.12467861036229679</datum>
+        <datum id="label_group_2" stddev="0.025" weight="2">0.06287615129947846</datum>
+        <datum id="label_group_2" stddev="0.025" weight="3">0.13416714088090262</datum>
+        <datum id="label_group_2" stddev="0.025" weight="4">0.15239865140103173</datum>
+        <datum id="label_group_2" stddev="0.025" weight="5">0.10177372459179918</datum>
+        <datum id="label_group_2" stddev="0.025" weight="6">0.40321784745521466</datum>
+        <datum id="label_group_3" stddev="0.025" weight="0">0.12576683850259657</datum>
+        <datum id="label_group_3" stddev="0.025" weight="1">0.16649815176170657</datum>
+        <datum id="label_group_3" stddev="0.025" weight="3">0.5403156245536774</datum>
+        <datum id="label_group_4" stddev="0.025" weight="0">0.1625249095543275</datum>
+        <datum id="label_group_4" stddev="0.025" weight="1">0.20386696793287432</datum>
+        <datum id="label_group_4" stddev="0.025" weight="3">0.6336081225127982</datum>
+        <datum id="label_group_5" stddev="0.025" weight="0">0.16679486492279066</datum>
+        <datum id="label_group_5" stddev="0.025" weight="1">0.15551923558818878</datum>
+        <datum id="label_group_5" stddev="0.025" weight="2">0.08032709135224267</datum>
+        <datum id="label_group_5" stddev="0.025" weight="3">0.5973588081367779</datum>
+        <datum id="label_group_6" stddev="0.031" weight="0">0.1718897631948802</datum>
+        <datum id="label_group_6" stddev="0.025" weight="1">0.15796107698590384</datum>
+        <datum id="label_group_6" stddev="0.025" weight="2">0.10350218525800736</datum>
+        <datum id="label_group_6" stddev="0.031" weight="3">0.5666469745612086</datum>
+        <datum id="label_group_7" stddev="0.025" weight="0">0.1537540373222098</datum>
+        <datum id="label_group_7" stddev="0.025" weight="1">0.14664315936025102</datum>
+        <datum id="label_group_7" stddev="0.025" weight="2">0.09479022747809471</datum>
+        <datum id="label_group_7" stddev="0.025" weight="3">0.6048125758394445</datum>
+        <datum id="label_group_9" stddev="0.025" weight="0">0.008750658126223759</datum>
+        <datum id="label_group_9" stddev="0.025" weight="1">0.03072450434626935</datum>
+        <datum id="label_group_9" stddev="0.025" weight="2">0.0811961898589941</datum>
+        <datum id="label_group_9" stddev="0.025" weight="3">0.16412183220228224</datum>
+        <datum id="label_group_9" stddev="0.025" weight="4">0.2415107858427318</datum>
+        <datum id="label_group_9" stddev="0.025" weight="5">0.23603121365004184</datum>
+        <datum id="label_group_9" stddev="0.025" weight="6">0.2376648159734569</datum>
+        <datum id="label_group_11" stddev="0.025" weight="0">0.011716273460372314</datum>
+        <datum id="label_group_11" stddev="0.025" weight="1">0.03175600755968994</datum>
+        <datum id="label_group_11" stddev="0.025" weight="2">0.08032409526490283</datum>
+        <datum id="label_group_11" stddev="0.025" weight="3">0.16425574751681085</datum>
+        <datum id="label_group_11" stddev="0.025" weight="4">0.24205457090856317</datum>
+        <datum id="label_group_11" stddev="0.025" weight="5">0.23567931294483438</datum>
+        <datum id="label_group_11" stddev="0.025" weight="6">0.23421399234482648</datum>
+        <datum id="label_group_12" stddev="0.025" weight="0">0.013398311238909482</datum>
+        <datum id="label_group_12" stddev="0.025" weight="1">0.04679956432507947</datum>
+        <datum id="label_group_12" stddev="0.025" weight="2">0.12931413276665743</datum>
+        <datum id="label_group_12" stddev="0.025" weight="3">0.25630965773157394</datum>
+        <datum id="label_group_12" stddev="0.025" weight="4">0.263454328726854</datum>
+        <datum id="label_group_12" stddev="0.025" weight="5">0.29072400521092584</datum>
+        <datum id="label_group_13" stddev="0.025" weight="0">0.04669117498619175</datum>
+        <datum id="label_group_13" stddev="0.025" weight="1">0.11550311730297463</datum>
+        <datum id="label_group_13" stddev="0.025" weight="2">0.1945469882139362</datum>
+        <datum id="label_group_13" stddev="0.025" weight="3">0.25015588668038596</datum>
+        <datum id="label_group_13" stddev="0.025" weight="4">0.39310283281651154</datum>
+        <datum id="label_group_14" stddev="0.025" weight="0">0.054500035824718386</datum>
+        <datum id="label_group_14" stddev="0.025" weight="1">0.13512941566418907</datum>
+        <datum id="label_group_14" stddev="0.025" weight="2">0.17670452634245973</datum>
+        <datum id="label_group_14" stddev="0.025" weight="3">0.247641723623455</datum>
+        <datum id="label_group_14" stddev="0.025" weight="4">0.38602429854517784</datum>
+        <datum id="label_group_15" stddev="0.025" weight="0">0.04696772486458407</datum>
+        <datum id="label_group_15" stddev="0.025" weight="1">0.13279210123497323</datum>
+        <datum id="label_group_15" stddev="0.025" weight="2">0.17302649160202044</datum>
+        <datum id="label_group_15" stddev="0.025" weight="3">0.2534407147287378</datum>
+        <datum id="label_group_15" stddev="0.025" weight="4">0.39377296756968455</datum>
+        <datum id="label_group_16" stddev="0.025" weight="0">0.056100614025630144</datum>
+        <datum id="label_group_16" stddev="0.025" weight="1">0.06257768849358726</datum>
+        <datum id="label_group_16" stddev="0.025" weight="2">0.13836822471326551</datum>
+        <datum id="label_group_16" stddev="0.025" weight="3">0.2135403701284039</datum>
+        <datum id="label_group_16" stddev="0.025" weight="4">0.14854017808988698</datum>
+        <datum id="label_group_16" stddev="0.025" weight="5">0.3808729245492263</datum>
+        <datum id="label_group_17" stddev="0.025" weight="0">0.022277688071997655</datum>
+        <datum id="label_group_17" stddev="0.025" weight="1">0.031711298635129684</datum>
+        <datum id="label_group_17" stddev="0.025" weight="2">0.09062762720071994</datum>
+        <datum id="label_group_17" stddev="0.025" weight="3">0.0996374399712989</datum>
+        <datum id="label_group_17" stddev="0.025" weight="4">0.12551612075371796</datum>
+        <datum id="label_group_17" stddev="0.025" weight="5">0.2206364696023509</datum>
+        <datum id="label_group_17" stddev="0.025" weight="6">0.14649125579744393</datum>
+        <datum id="label_group_17" stddev="0.025" weight="7">0.263102099967341</datum>
+        <datum id="label_group_18" stddev="0.025" weight="0">0.011561552890165928</datum>
+        <datum id="label_group_18" stddev="0.025" weight="1">0.01785208336464637</datum>
+        <datum id="label_group_18" stddev="0.025" weight="2">0.04087629547512835</datum>
+        <datum id="label_group_18" stddev="0.025" weight="3">0.06723862316211188</datum>
+        <datum id="label_group_18" stddev="0.025" weight="4">0.08530824114767317</datum>
+        <datum id="label_group_18" stddev="0.025" weight="5">0.16346010848093642</datum>
+        <datum id="label_group_18" stddev="0.025" weight="6">0.14884970970499198</datum>
+        <datum id="label_group_18" stddev="0.025" weight="7">0.14518087121957252</datum>
+        <datum id="label_group_18" stddev="0.025" weight="8">0.12457725238497547</datum>
+        <datum id="label_group_18" stddev="0.025" weight="9">0.19509526216979806</datum>
+        <datum id="label_group_19" stddev="0.025" weight="0">0.0023602740392063655</datum>
+        <datum id="label_group_19" stddev="0.025" weight="1">0.003943772773809078</datum>
+        <datum id="label_group_19" stddev="0.025" weight="2">0.005797442158473427</datum>
+        <datum id="label_group_19" stddev="0.025" weight="3">0.07408418478391265</datum>
+        <datum id="label_group_19" stddev="0.025" weight="4">0.09104433097267009</datum>
+        <datum id="label_group_19" stddev="0.025" weight="5">0.1657306930797277</datum>
+        <datum id="label_group_19" stddev="0.025" weight="6">0.16500163582113134</datum>
+        <datum id="label_group_19" stddev="0.025" weight="7">0.16060727091637722</datum>
+        <datum id="label_group_19" stddev="0.025" weight="8">0.1292426135947054</datum>
+        <datum id="label_group_19" stddev="0.025" weight="9">0.2021877818599867</datum>
+        <datum id="label_group_20" stddev="0.025" weight="0">0.17287945169539629</datum>
+        <datum id="label_group_20" stddev="0.025" weight="1">0.1377571271572452</datum>
+        <datum id="label_group_20" stddev="0.025" weight="2">0.08196711138424188</datum>
+        <datum id="label_group_20" stddev="0.025" weight="3">0.6073963097631168</datum>
+        <datum id="label_group_21" stddev="0.025" weight="0">0.0634559471147544</datum>
+        <datum id="label_group_21" stddev="0.025" weight="1">0.06150113520146257</datum>
+        <datum id="label_group_21" stddev="0.025" weight="2">0.15273774254667388</datum>
+        <datum id="label_group_21" stddev="0.025" weight="3">0.22595557308664893</datum>
+        <datum id="label_group_21" stddev="0.025" weight="4">0.13643267422053917</datum>
+        <datum id="label_group_21" stddev="0.025" weight="5">0.3599169278299211</datum>
+        <datum id="label_group_22" stddev="0.025" weight="0">0.019956369983625672</datum>
+        <datum id="label_group_22" stddev="0.025" weight="1">0.021832389180808914</datum>
+        <datum id="label_group_22" stddev="0.025" weight="2">0.09512624042776145</datum>
+        <datum id="label_group_22" stddev="0.025" weight="3">0.12593917012993708</datum>
+        <datum id="label_group_22" stddev="0.025" weight="4">0.29484145946315427</datum>
+        <datum id="label_group_22" stddev="0.025" weight="5">0.1872309664068088</datum>
+        <datum id="label_group_22" stddev="0.025" weight="6">0.2550734044079039</datum>
+        <datum id="label_group_23" stddev="0.025" weight="0">0.18101476268790925</datum>
+        <datum id="label_group_23" stddev="0.025" weight="1">0.14748663406501283</datum>
+        <datum id="label_group_23" stddev="0.025" weight="2">0.0787927124269641</datum>
+        <datum id="label_group_23" stddev="0.025" weight="3">0.5927058908201139</datum>
+        <datum id="label_group_25" stddev="0.025" weight="0">0.012700804274061565</datum>
+        <datum id="label_group_25" stddev="0.025" weight="1">0.04850822512533276</datum>
+        <datum id="label_group_25" stddev="0.025" weight="2">0.12966457285966768</datum>
+        <datum id="label_group_25" stddev="0.025" weight="3">0.26174707369174866</datum>
+        <datum id="label_group_25" stddev="0.025" weight="4">0.2618617275081514</datum>
+        <datum id="label_group_25" stddev="0.025" weight="5">0.28551759654103803</datum>
+        <datum id="label_group_26" stddev="0.025" weight="0">0.012889916975177279</datum>
+        <datum id="label_group_26" stddev="0.025" weight="1">0.04736715277608712</datum>
+        <datum id="label_group_26" stddev="0.025" weight="2">0.1285671178999735</datum>
+        <datum id="label_group_26" stddev="0.025" weight="3">0.2587002148078172</datum>
+        <datum id="label_group_26" stddev="0.025" weight="4">0.2626717106364488</datum>
+        <datum id="label_group_26" stddev="0.025" weight="5">0.28980388690449616</datum>
+        <datum id="label_group_27" stddev="0.025" weight="0">0.01054215074905394</datum>
+        <datum id="label_group_27" stddev="0.025" weight="1">0.025736057920783418</datum>
+        <datum id="label_group_27" stddev="0.025" weight="2">0.07215805672530773</datum>
+        <datum id="label_group_27" stddev="0.025" weight="3">0.1723862521934367</datum>
+        <datum id="label_group_27" stddev="0.025" weight="4">0.25931746380361054</datum>
+        <datum id="label_group_27" stddev="0.025" weight="5">0.2611542804729202</datum>
+        <datum id="label_group_27" stddev="0.025" weight="6">0.19870573813488748</datum>
+        <datum id="label_group_28" stddev="0.025" weight="0">0.043766113672099954</datum>
+        <datum id="label_group_28" stddev="0.025" weight="1">0.1303084808570509</datum>
+        <datum id="label_group_28" stddev="0.025" weight="2">0.17730994521059268</datum>
+        <datum id="label_group_28" stddev="0.025" weight="3">0.24845967915987202</datum>
+        <datum id="label_group_28" stddev="0.025" weight="4">0.40015578110038447</datum>
+        <datum id="label_group_29" stddev="0.025" weight="0">0.01050781477763358</datum>
+        <datum id="label_group_29" stddev="0.025" weight="1">0.033710352919430545</datum>
+        <datum id="label_group_29" stddev="0.025" weight="2">0.08523409451988267</datum>
+        <datum id="label_group_29" stddev="0.025" weight="3">0.16641033278214606</datum>
+        <datum id="label_group_29" stddev="0.025" weight="4">0.23342099468563066</datum>
+        <datum id="label_group_29" stddev="0.025" weight="5">0.22404445619054378</datum>
+        <datum id="label_group_29" stddev="0.025" weight="6">0.24667195412473272</datum>
+        <datum id="label_group_30" stddev="0.025" weight="0">0.04850574807761805</datum>
+        <datum id="label_group_30" stddev="0.025" weight="1">0.13281994204303146</datum>
+        <datum id="label_group_30" stddev="0.025" weight="2">0.18578930716707476</datum>
+        <datum id="label_group_30" stddev="0.025" weight="3">0.24310179870593557</datum>
+        <datum id="label_group_30" stddev="0.025" weight="4">0.38978320400634014</datum>
+        <datum id="label_group_31" stddev="0.025" weight="0">0.016269989131272308</datum>
+        <datum id="label_group_31" stddev="0.025" weight="1">0.03431577724464428</datum>
+        <datum id="label_group_31" stddev="0.025" weight="2">0.08390133221044181</datum>
+        <datum id="label_group_31" stddev="0.025" weight="3">0.16065259349231956</datum>
+        <datum id="label_group_31" stddev="0.025" weight="4">0.2360217569810627</datum>
+        <datum id="label_group_31" stddev="0.025" weight="5">0.2157252451068352</datum>
+        <datum id="label_group_31" stddev="0.025" weight="6">0.25311330583342423</datum>
+        <datum id="label_group_32" stddev="0.025" weight="0">0.014000309992083276</datum>
+        <datum id="label_group_32" stddev="0.025" weight="1">0.0586569931779545</datum>
+        <datum id="label_group_32" stddev="0.025" weight="2">0.13466216106031706</datum>
+        <datum id="label_group_32" stddev="0.025" weight="3">0.20225569106848448</datum>
+        <datum id="label_group_32" stddev="0.025" weight="4">0.3035171069483116</datum>
+        <datum id="label_group_32" stddev="0.025" weight="5">0.2869077377528492</datum>
+        <datum id="label_group_33" stddev="0.025" weight="0">0.012935193373719739</datum>
+        <datum id="label_group_33" stddev="0.025" weight="1">0.04735378041720035</datum>
+        <datum id="label_group_33" stddev="0.025" weight="2">0.12871546635852454</datum>
+        <datum id="label_group_33" stddev="0.025" weight="3">0.2579899693540596</datum>
+        <datum id="label_group_33" stddev="0.025" weight="4">0.26309916320424476</datum>
+        <datum id="label_group_33" stddev="0.025" weight="5">0.28990642729225097</datum>
+        
+        <datum id="fp_2" stddev="150">4130</datum> 
+        <datum id="fp_3" stddev="0.03">0.4</datum>
+	<datum id="fp_4" stddev="760">8240</datum>
+        <datum id="fp_5" stddev="49.43">1360.835</datum> 
+	<datum id="fp_6" stddev="100.43">2765.035</datum>
+        <datum id="fp_7" stddev="1.3">12.98</datum>
+        
+        </data>
+    </measurement>
+
+    <simulation method="auto" type="auto">  
+    <variables>
+        <fluxvalue flux="glc_upt_1_13C" type="net">1395.4214310747645</fluxvalue>
+        <fluxvalue flux="glc_upt_U_13C" type="net">2690.524395736013</fluxvalue>
+        <fluxvalue flux="gnd___1" type="net">1289.7329614055323</fluxvalue>
+        <fluxvalue flux="mu_mes___1" type="net">.41086963368860563</fluxvalue>
+        <fluxvalue flux="pca_upt" type="net">13.016081622437154</fluxvalue>
+        <!--<fluxvalue flux="pyc_odx___1" type="net">1325.4852328072136</fluxvalue>-->
+        <!--<fluxvalue flux="pyk" type="net">1858.696501514595</fluxvalue>-->
+        <!--<fluxvalue flux="acn" type="xch">11974.23404453989</fluxvalue>-->
+        <!--<fluxvalue flux="aspB___1" type="xch">5689.783169029955</fluxvalue>-->
+        <!--<fluxvalue flux="eno" type="xch">212285.53266755593</fluxvalue>-->
+        <fluxvalue flux="fda" type="xch">7061.082524798349</fluxvalue>
+        <!--<fluxvalue flux="fumC___1" type="xch">68227.68884821088</fluxvalue>-->
+        <!--<fluxvalue flux="gapA" type="xch">81465.63438303898</fluxvalue>-->
+        <!--<fluxvalue flux="gdh___1" type="xch">2080532.491493816</fluxvalue>-->
+        <!--<fluxvalue flux="icd" type="xch">732.0152840050424</fluxvalue>-->
+        <!--<fluxvalue flux="mez___1" type="xch">5.000000005139782e-07</fluxvalue>-->
+        <!--<fluxvalue flux="mqo_mdh___1" type="xch">25660.126591546446</fluxvalue>-->
+        <fluxvalue flux="pck_ppc___1" type="xch">1748.0080273537665</fluxvalue>
+        <fluxvalue flux="pfk" type="xch">1246.0304130168643</fluxvalue>
+        <!--<fluxvalue flux="pgi" type="xch">95165.1391043064</fluxvalue>-->
+        <!--<fluxvalue flux="pgm_ots" type="xch">409.6695705580755</fluxvalue>-->
+        <!--<fluxvalue flux="pyc_odx___1" type="xch">5.000000000000664e-07</fluxvalue>-->
+        <!--<fluxvalue flux="sdh___1" type="xch">42792.754484722</fluxvalue>-->
+        <!--<fluxvalue flux="tal___1" type="xch">4.999999987376214e-07</fluxvalue>-->
+        <fluxvalue flux="tkt1___1" type="xch">6037.731879935157</fluxvalue>
+        <fluxvalue flux="tkt2___1" type="xch">535.6642249771303</fluxvalue>
+        <fluxvalue flux="tpi" type="xch">12156.09023311964</fluxvalue>
+      </variables></simulation>                               
+  </configuration>
+</fluxml>
